@@ -1,0 +1,690 @@
+
+/* Class = "UIButton"; normalTitle = "Галерея"; ObjectID = "01K-6i-9Ub"; */
+"01K-6i-9Ub.normalTitle" = "Галерея";
+
+/* Class = "UITextView"; text = "Ваша профессия делать людей стильными и красивыми?"; ObjectID = "08b-Za-XLs"; */
+"08b-Za-XLs.text" = "Ваша профессия делать людей стильными и красивыми?";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "0LD-hW-2gO"; */
+"0LD-hW-2gO.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Галерея"; ObjectID = "11n-QR-5V7"; */
+"11n-QR-5V7.normalTitle" = "Галерея";
+
+/* Class = "UITextField"; placeholder = "Введите пароль"; ObjectID = "1pt-mJ-JsJ"; */
+"1pt-mJ-JsJ.placeholder" = "Введите пароль";
+
+/* Class = "UIButton"; accessibilityLabel = "0"; ObjectID = "1r2-DD-f6h"; */
+"1r2-DD-f6h.accessibilityLabel" = "0";
+
+/* Class = "UIButton"; normalTitle = "Плечи"; ObjectID = "1r2-DD-f6h"; */
+"1r2-DD-f6h.normalTitle" = "Плечи";
+
+/* Class = "UILabel"; text = "Цвет вен:"; ObjectID = "28u-hL-bSd"; */
+"28u-hL-bSd.text" = "Цвет вен:";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "2Ff-Us-Nfc"; */
+"2Ff-Us-Nfc.normalTitle" = "L";
+
+/* Class = "UILabel"; text = "U"; ObjectID = "2kc-1D-kP9"; */
+"2kc-1D-kP9.text" = "U";
+
+/* Class = "UISegmentedControl"; 3Zt-Zo-ob9.segmentTitles[0] = "Мужской"; ObjectID = "3Zt-Zo-ob9"; */
+"3Zt-Zo-ob9.segmentTitles[0]" = "Мужской";
+
+/* Class = "UISegmentedControl"; 3Zt-Zo-ob9.segmentTitles[1] = "Женский"; ObjectID = "3Zt-Zo-ob9"; */
+"3Zt-Zo-ob9.segmentTitles[1]" = "Женский";
+
+/* Class = "UILabel"; text = "* - обязательно для заполнения"; ObjectID = "3a8-ja-OfZ"; */
+"3a8-ja-OfZ.text" = "* - обязательно для заполнения";
+
+/* Class = "UILabel"; text = "Загар:"; ObjectID = "3jW-vn-fXR"; */
+"3jW-vn-fXR.text" = "Загар:";
+
+/* Class = "UIViewController"; title = "stylistAcceptConsultation"; ObjectID = "4ct-Y5-G9D"; */
+"4ct-Y5-G9D.title" = "stylistAcceptConsultation";
+
+/* Class = "UILabel"; text = "Вход для пользователей"; ObjectID = "4t5-xz-q5z"; */
+"4t5-xz-q5z.text" = "Вход для пользователей";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4wE-5E-ybF"; */
+"4wE-5E-ybF.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "5OE-FY-P7U"; */
+"5OE-FY-P7U.normalTitle" = "Send";
+
+/* Class = "UINavigationItem"; title = "Детали"; ObjectID = "5UG-l7-Wwj"; */
+"5UG-l7-Wwj.title" = "Детали";
+
+/* Class = "UIButton"; normalTitle = "Отменить"; ObjectID = "6V9-UN-XLv"; */
+"6V9-UN-XLv.normalTitle" = "Отменить";
+
+/* Class = "UILabel"; text = "* - ваш природный цвет волос, даже если волосы окрашены"; ObjectID = "6WG-uY-KDC"; */
+"6WG-uY-KDC.text" = "* - ваш природный цвет волос, даже если волосы окрашены";
+
+/* Class = "UIButton"; normalTitle = "Вход для профессионалов"; ObjectID = "6Wc-Es-Ayi"; */
+"6Wc-Es-Ayi.normalTitle" = "Вход для профессионалов";
+
+/* Class = "UILabel"; text = "NickName"; ObjectID = "7xb-zJ-X8e"; */
+"7xb-zJ-X8e.text" = "NickName";
+
+/* Class = "UIButton"; normalTitle = "Регистрация"; ObjectID = "85n-4B-HWN"; */
+"85n-4B-HWN.normalTitle" = "Регистрация";
+
+/* Class = "UIButton"; accessibilityLabel = "1"; ObjectID = "8KK-TG-VDz"; */
+"8KK-TG-VDz.accessibilityLabel" = "1";
+
+/* Class = "UIButton"; normalTitle = "Грудь"; ObjectID = "8KK-TG-VDz"; */
+"8KK-TG-VDz.normalTitle" = "Грудь";
+
+/* Class = "UITextField"; accessibilityIdentifier = "password"; ObjectID = "8iT-MT-RSf"; */
+"8iT-MT-RSf.accessibilityIdentifier" = "password";
+
+/* Class = "UITextField"; placeholder = "Введите пароль"; ObjectID = "9Bg-Gj-j8W"; */
+"9Bg-Gj-j8W.placeholder" = "Введите пароль";
+
+/* Class = "UIButton"; accessibilityLabel = "userRegistrationStep2"; ObjectID = "9bG-vF-3M9"; */
+"9bG-vF-3M9.accessibilityLabel" = "userRegistrationStep2";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "9bG-vF-3M9"; */
+"9bG-vF-3M9.normalTitle" = "Далее";
+
+/* Class = "UIViewController"; title = "StylistEntrance"; ObjectID = "9du-8Z-x6j"; */
+"9du-8Z-x6j.title" = "StylistEntrance";
+
+/* Class = "UIButton"; normalTitle = "C"; ObjectID = "9oD-HK-nSx"; */
+"9oD-HK-nSx.normalTitle" = "C";
+
+/* Class = "UIButton"; normalTitle = "C"; ObjectID = "9tJ-7j-0Pc"; */
+"9tJ-7j-0Pc.normalTitle" = "C";
+
+/* Class = "UILabel"; text = "Цвет глаз"; ObjectID = "A4x-Kr-4OD"; */
+"A4x-Kr-4OD.text" = "Цвет глаз";
+
+/* Class = "UIButton"; normalTitle = "W"; ObjectID = "ACo-u1-ijM"; */
+"ACo-u1-ijM.normalTitle" = "W";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "AJI-au-AbC"; */
+"AJI-au-AbC.normalTitle" = "P";
+
+/* Class = "UIButton"; normalTitle = "Камера"; ObjectID = "AXU-zu-7kv"; */
+"AXU-zu-7kv.normalTitle" = "Камера";
+
+/* Class = "UILabel"; text = "ФИО*:"; ObjectID = "AYy-gb-HQa"; */
+"AYy-gb-HQa.text" = "ФИО*:";
+
+/* Class = "UINavigationItem"; title = "Профиль стилиста"; ObjectID = "Ae2-2l-E0C"; */
+"Ae2-2l-E0C.title" = "Профиль стилиста";
+
+/* Class = "UIViewController"; title = "stylistRegistrationStep1"; ObjectID = "BSv-XQ-vbI"; */
+"BSv-XQ-vbI.title" = "stylistRegistrationStep1";
+
+/* Class = "UIButton"; accessibilityLabel = "0"; ObjectID = "BTH-Ne-HUH"; */
+"BTH-Ne-HUH.accessibilityLabel" = "0";
+
+/* Class = "UIButton"; normalTitle = "Плечи"; ObjectID = "BTH-Ne-HUH"; */
+"BTH-Ne-HUH.normalTitle" = "Плечи";
+
+/* Class = "UILabel"; text = "Еще немного о себе"; ObjectID = "C75-vB-Q8u"; */
+"C75-vB-Q8u.text" = "Еще немного о себе";
+
+/* Class = "UINavigationItem"; title = "Профиль"; ObjectID = "CHj-mD-JjA"; */
+"CHj-mD-JjA.title" = "Профиль";
+
+/* Class = "UILabel"; text = "Анкета стилиста"; ObjectID = "CcC-3m-vlh"; */
+"CcC-3m-vlh.text" = "Анкета стилиста";
+
+/* Class = "UIButton"; normalTitle = "Фото"; ObjectID = "DDv-hF-vig"; */
+"DDv-hF-vig.normalTitle" = "Фото";
+
+/* Class = "UIButton"; accessibilityLabel = "3"; ObjectID = "DL5-Ks-pFk"; */
+"DL5-Ks-pFk.accessibilityLabel" = "3";
+
+/* Class = "UIButton"; normalTitle = "Бедра"; ObjectID = "DL5-Ks-pFk"; */
+"DL5-Ks-pFk.normalTitle" = "Бедра";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "DfB-bs-zMO"; */
+"DfB-bs-zMO.normalTitle" = "Назад";
+
+/* Class = "UITextView"; text = "Мечтаете найти свой неповторимый стиль, подобрать одежду по случаю и по фигуре и выглядеть безупречно – Ждем Вас! "; ObjectID = "DyL-4C-1bz"; */
+"DyL-4C-1bz.text" = "Мечтаете найти свой неповторимый стиль, подобрать одежду по случаю и по фигуре и выглядеть безупречно – Ждем Вас! ";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "Ebi-nw-Rvx"; */
+"Ebi-nw-Rvx.normalTitle" = "A";
+
+/* Class = "UIButton"; normalTitle = "W"; ObjectID = "Eya-WB-dXr"; */
+"Eya-WB-dXr.normalTitle" = "W";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "FbY-0o-1f4"; */
+"FbY-0o-1f4.normalTitle" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Фото"; ObjectID = "Fok-G7-qeh"; */
+"Fok-G7-qeh.normalTitle" = "Фото";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "GBH-3z-Bjo"; */
+"GBH-3z-Bjo.normalTitle" = "+";
+
+/* Class = "UITextView"; accessibilityIdentifier = "target"; ObjectID = "GZz-U3-SyP"; */
+"GZz-U3-SyP.accessibilityIdentifier" = "target";
+
+/* Class = "UITextView"; text = "Род занятий, стиль жизни, цели консультирования и другие факты которые характеризуют Вас и Ваш стиль жзини..."; ObjectID = "GZz-U3-SyP"; */
+"GZz-U3-SyP.text" = "Род занятий, стиль жизни, цели консультирования и другие факты которые характеризуют Вас и Ваш стиль жзини...";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "GjG-03-oOm"; */
+"GjG-03-oOm.normalTitle" = "A";
+
+/* Class = "UIButton"; normalTitle = "Галерея"; ObjectID = "GvY-Ig-WJ8"; */
+"GvY-Ig-WJ8.normalTitle" = "Галерея";
+
+/* Class = "UIButton"; normalTitle = "<-"; ObjectID = "Gwd-Ra-odQ"; */
+"Gwd-Ra-odQ.normalTitle" = "<-";
+
+/* Class = "UIButton"; normalTitle = "Выход"; ObjectID = "HpK-eX-LUI"; */
+"HpK-eX-LUI.normalTitle" = "Выход";
+
+/* Class = "UIButton"; normalTitle = "Загрузить на сервер"; ObjectID = "ICC-nz-UeC"; */
+"ICC-nz-UeC.normalTitle" = "Загрузить на сервер";
+
+/* Class = "UITextView"; text = "Введите комментарий к фотографии для стилистов или пользователей..."; ObjectID = "IlI-kE-coN"; */
+"IlI-kE-coN.text" = "Введите комментарий к фотографии для стилистов или пользователей...";
+
+/* Class = "UILabel"; text = "Диплом*:"; ObjectID = "Iys-m2-mPv"; */
+"Iys-m2-mPv.text" = "Диплом*:";
+
+/* Class = "UIButton"; normalTitle = "Камера"; ObjectID = "JxV-sb-85m"; */
+"JxV-sb-85m.normalTitle" = "Камера";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "Kbg-6t-qIb"; */
+"Kbg-6t-qIb.normalTitle" = "L";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "KeI-ba-VXw"; */
+"KeI-ba-VXw.normalTitle" = "Назад";
+
+/* Class = "UILabel"; text = "О себе"; ObjectID = "Ksu-4y-Neu"; */
+"Ksu-4y-Neu.text" = "О себе";
+
+/* Class = "UILabel"; text = "Пароль"; ObjectID = "Lh1-R2-xAP"; */
+"Lh1-R2-xAP.text" = "Пароль";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "Ls2-Sc-UfL"; */
+"Ls2-Sc-UfL.normalTitle" = "Назад";
+
+/* Class = "UILabel"; text = "Фото на аватар"; ObjectID = "Lwv-yE-Adx"; */
+"Lwv-yE-Adx.text" = "Фото на аватар";
+
+/* Class = "UIButton"; accessibilityLabel = "userRegistrationStep1"; ObjectID = "M3a-fY-cok"; */
+"M3a-fY-cok.accessibilityLabel" = "userRegistrationStep1";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "M3a-fY-cok"; */
+"M3a-fY-cok.normalTitle" = "Назад";
+
+/* Class = "UIButton"; normalTitle = "Галерея"; ObjectID = "M9c-dZ-9rt"; */
+"M9c-dZ-9rt.normalTitle" = "Галерея";
+
+/* Class = "UIButton"; normalTitle = "Магазин"; ObjectID = "MJz-h2-OVN"; */
+"MJz-h2-OVN.normalTitle" = "Магазин";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "MR1-K1-DW7"; */
+"MR1-K1-DW7.normalTitle" = "A";
+
+/* Class = "UILabel"; text = "Проекты:"; ObjectID = "Mkk-iK-law"; */
+"Mkk-iK-law.text" = "Проекты:";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "MpU-Dx-2cG"; */
+"MpU-Dx-2cG.normalTitle" = "A";
+
+/* Class = "UIViewController"; title = "selectPath"; ObjectID = "NKN-x0-q5J"; */
+"NKN-x0-q5J.title" = "selectPath";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "NOb-DJ-Api"; */
+"NOb-DJ-Api.normalTitle" = "Назад";
+
+/* Class = "UINavigationItem"; title = "Гардероб"; ObjectID = "NjR-Vh-UEO"; */
+"NjR-Vh-UEO.title" = "Гардероб";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "NjT-3x-xEt"; */
+"NjT-3x-xEt.normalTitle" = "P";
+
+/* Class = "UIButton"; accessibilityLabel = "2"; ObjectID = "OUm-FE-WDI"; */
+"OUm-FE-WDI.accessibilityLabel" = "2";
+
+/* Class = "UIButton"; normalTitle = "Талия"; ObjectID = "OUm-FE-WDI"; */
+"OUm-FE-WDI.normalTitle" = "Талия";
+
+/* Class = "UILabel"; text = "E-mail*:"; ObjectID = "OWc-oT-rTJ"; */
+"OWc-oT-rTJ.text" = "E-mail*:";
+
+/* Class = "UIButton"; normalTitle = "Завершить"; ObjectID = "OmK-ZV-Txd"; */
+"OmK-ZV-Txd.normalTitle" = "Завершить";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "PsG-gE-XmL"; */
+"PsG-gE-XmL.normalTitle" = "L";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QbG-YR-jWF"; */
+"QbG-YR-jWF.text" = "Label";
+
+/* Class = "UILabel"; text = "School*:"; ObjectID = "QuH-h8-8j7"; */
+"QuH-h8-8j7.text" = "School*:";
+
+/* Class = "UILabel"; text = "Цвет кожи:"; ObjectID = "R1u-OK-wwc"; */
+"R1u-OK-wwc.text" = "Цвет кожи:";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "RUb-5i-aw6"; */
+"RUb-5i-aw6.normalTitle" = "Далее";
+
+/* Class = "UIViewController"; title = "Library"; ObjectID = "Rfm-a7-J8L"; */
+"Rfm-a7-J8L.title" = "Library";
+
+/* Class = "UIButton"; normalTitle = "Фото"; ObjectID = "Rno-jI-AY7"; */
+"Rno-jI-AY7.normalTitle" = "Фото";
+
+/* Class = "UILabel"; text = "E-mail*:"; ObjectID = "Rq0-3R-maD"; */
+"Rq0-3R-maD.text" = "E-mail*:";
+
+/* Class = "UINavigationItem"; title = "Детали"; ObjectID = "SCb-Lo-E8I"; */
+"SCb-Lo-E8I.title" = "Детали";
+
+/* Class = "UIButton"; normalTitle = "Выход"; ObjectID = "SdP-Pq-HBI"; */
+"SdP-Pq-HBI.normalTitle" = "Выход";
+
+/* Class = "UIButton"; normalTitle = "Регистрация"; ObjectID = "Sjy-bf-rJH"; */
+"Sjy-bf-rJH.normalTitle" = "Регистрация";
+
+/* Class = "UITextView"; text = "Здесь пока что нет комментариев...."; ObjectID = "SpZ-OD-hhM"; */
+"SpZ-OD-hhM.text" = "Здесь пока что нет комментариев....";
+
+/* Class = "UILabel"; text = "NickName"; ObjectID = "SyD-Bk-Dg6"; */
+"SyD-Bk-Dg6.text" = "NickName";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Tar-61-kow"; */
+"Tar-61-kow.text" = "Label";
+
+/* Class = "UIButton"; accessibilityLabel = "userRegistrationStep4"; ObjectID = "TdO-oe-LXB"; */
+"TdO-oe-LXB.accessibilityLabel" = "userRegistrationStep4";
+
+/* Class = "UIButton"; normalTitle = "Завершить"; ObjectID = "TdO-oe-LXB"; */
+"TdO-oe-LXB.normalTitle" = "Завершить";
+
+/* Class = "UIButton"; normalTitle = "Фигура"; ObjectID = "Tji-JH-DMB"; */
+"Tji-JH-DMB.normalTitle" = "Фигура";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "To4-Mb-ycW"; */
+"To4-Mb-ycW.normalTitle" = "L";
+
+/* Class = "UIButton"; accessibilityLabel = "userRegistrationStep2"; ObjectID = "TxM-v5-Nl8"; */
+"TxM-v5-Nl8.accessibilityLabel" = "userRegistrationStep2";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "TxM-v5-Nl8"; */
+"TxM-v5-Nl8.normalTitle" = "Назад";
+
+/* Class = "UIViewController"; title = "createPropose"; ObjectID = "U41-VL-u1t"; */
+"U41-VL-u1t.title" = "createPropose";
+
+/* Class = "UIButton"; normalTitle = "W"; ObjectID = "U88-CQ-Gye"; */
+"U88-CQ-Gye.normalTitle" = "W";
+
+/* Class = "UIViewController"; title = "stylistProfileDetail"; ObjectID = "Uje-6w-fYW"; */
+"Uje-6w-fYW.title" = "stylistProfileDetail";
+
+/* Class = "UILabel"; text = "Логин"; ObjectID = "Uv9-zW-zUV"; */
+"Uv9-zW-zUV.text" = "Логин";
+
+/* Class = "UIViewController"; title = "showPictures"; ObjectID = "UyG-xf-fF3"; */
+"UyG-xf-fF3.title" = "showPictures";
+
+/* Class = "UIViewController"; title = "userRegistrationStep1"; ObjectID = "Vaa-g6-lHr"; */
+"Vaa-g6-lHr.title" = "userRegistrationStep1";
+
+/* Class = "UINavigationItem"; title = "Добавить изображение"; ObjectID = "W2E-tM-F58"; */
+"W2E-tM-F58.title" = "Добавить изображение";
+
+/* Class = "UILabel"; text = "Цвет волос:"; ObjectID = "WpT-WN-ggz"; */
+"WpT-WN-ggz.text" = "Цвет волос:";
+
+/* Class = "UINavigationItem"; title = "Доступные покупки"; ObjectID = "Xf3-yE-WOF"; */
+"Xf3-yE-WOF.title" = "Доступные покупки";
+
+/* Class = "UILabel"; text = "S"; ObjectID = "YMs-v4-rRA"; */
+"YMs-v4-rRA.text" = "S";
+
+/* Class = "UILabel"; text = "Ваша фигура"; ObjectID = "ZnE-Rk-hJl"; */
+"ZnE-Rk-hJl.text" = "Ваша фигура";
+
+/* Class = "UINavigationItem"; title = "Добавить изображение"; ObjectID = "a2C-0n-Zhc"; */
+"a2C-0n-Zhc.title" = "Добавить изображение";
+
+/* Class = "UIButton"; normalTitle = "C"; ObjectID = "abT-3m-CnC"; */
+"abT-3m-CnC.normalTitle" = "C";
+
+/* Class = "UIButton"; normalTitle = "W"; ObjectID = "abm-jh-swu"; */
+"abm-jh-swu.normalTitle" = "W";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bBi-Fb-4bn"; */
+"bBi-Fb-4bn.text" = "Label";
+
+/* Class = "UIViewController"; title = "userProfile"; ObjectID = "bS7-XJ-8fH"; */
+"bS7-XJ-8fH.title" = "userProfile";
+
+/* Class = "UILabel"; text = "Дата рождения*:"; ObjectID = "bji-th-l3s"; */
+"bji-th-l3s.text" = "Дата рождения*:";
+
+/* Class = "UITextField"; placeholder = "Введите логин или почту"; ObjectID = "c1f-Nx-WWf"; */
+"c1f-Nx-WWf.placeholder" = "Введите логин или почту";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "cQi-ab-SSo"; */
+"cQi-ab-SSo.normalTitle" = "L";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "cVo-tZ-dIx"; */
+"cVo-tZ-dIx.normalTitle" = "Далее";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "cWI-6p-AX0"; */
+"cWI-6p-AX0.normalTitle" = "A";
+
+/* Class = "UIButton"; normalTitle = "Галерея"; ObjectID = "czn-Ym-asW"; */
+"czn-Ym-asW.normalTitle" = "Галерея";
+
+/* Class = "UILabel"; text = "Пароль"; ObjectID = "d7m-en-IH0"; */
+"d7m-en-IH0.text" = "Пароль";
+
+/* Class = "UIButton"; normalTitle = "A"; ObjectID = "dJZ-rJ-ieb"; */
+"dJZ-rJ-ieb.normalTitle" = "A";
+
+/* Class = "UILabel"; text = "Пол*:"; ObjectID = "dLW-TY-pip"; */
+"dLW-TY-pip.text" = "Пол*:";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "dMa-ns-eEV"; */
+"dMa-ns-eEV.normalTitle" = "Назад";
+
+/* Class = "UILabel"; text = "Цвет глаз"; ObjectID = "dVR-9r-tl6"; */
+"dVR-9r-tl6.text" = "Цвет глаз";
+
+/* Class = "UILabel"; text = "Количество консультаций"; ObjectID = "dWA-XX-nHV"; */
+"dWA-XX-nHV.text" = "Количество консультаций";
+
+/* Class = "UILabel"; text = "Пароль*:"; ObjectID = "eSD-m4-Xvf"; */
+"eSD-m4-Xvf.text" = "Пароль*:";
+
+/* Class = "UILabel"; text = "Название:"; ObjectID = "eYc-gt-9E3"; */
+"eYc-gt-9E3.text" = "Название:";
+
+/* Class = "UIButton"; accessibilityLabel = "userRegistrationStep3"; ObjectID = "ehq-mU-Y4v"; */
+"ehq-mU-Y4v.accessibilityLabel" = "userRegistrationStep3";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "ehq-mU-Y4v"; */
+"ehq-mU-Y4v.normalTitle" = "Далее";
+
+/* Class = "UILabel"; text = "Дата рождения*:"; ObjectID = "ew7-up-A7T"; */
+"ew7-up-A7T.text" = "Дата рождения*:";
+
+/* Class = "UILabel"; text = "Логин*:"; ObjectID = "fNC-LF-5xL"; */
+"fNC-LF-5xL.text" = "Логин*:";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "fY6-Pb-l58"; */
+"fY6-Pb-l58.normalTitle" = "P";
+
+/* Class = "UIButton"; normalTitle = "Детали"; ObjectID = "fgE-n6-Kub"; */
+"fgE-n6-Kub.normalTitle" = "Детали";
+
+/* Class = "UILabel"; text = "Логин"; ObjectID = "fsl-DF-GgG"; */
+"fsl-DF-GgG.text" = "Логин";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "g5T-qC-VUe"; */
+"g5T-qC-VUe.text" = "Label";
+
+/* Class = "UILabel"; text = "Логин*:"; ObjectID = "g8f-I6-jbS"; */
+"g8f-I6-jbS.text" = "Логин*:";
+
+/* Class = "UILabel"; text = "Expirience*:"; ObjectID = "gC0-nr-3HD"; */
+"gC0-nr-3HD.text" = "Expirience*:";
+
+/* Class = "UIButton"; normalTitle = "W"; ObjectID = "gSy-9E-7Dm"; */
+"gSy-9E-7Dm.normalTitle" = "W";
+
+/* Class = "UIButton"; accessibilityLabel = "stylistAuth"; ObjectID = "gfM-3h-hJo"; */
+"gfM-3h-hJo.accessibilityLabel" = "stylistAuth";
+
+/* Class = "UIButton"; normalTitle = "Войти"; ObjectID = "gfM-3h-hJo"; */
+"gfM-3h-hJo.normalTitle" = "Войти";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "glN-In-2tO"; */
+"glN-In-2tO.normalTitle" = "Назад";
+
+/* Class = "UINavigationItem"; title = "Куда перенести изображение?"; ObjectID = "gsQ-Na-Loj"; */
+"gsQ-Na-Loj.title" = "Куда перенести изображение?";
+
+/* Class = "UILabel"; text = "Фото*:"; ObjectID = "h56-Qu-lU6"; */
+"h56-Qu-lU6.text" = "Фото*:";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "i0f-lz-dmm"; */
+"i0f-lz-dmm.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "i3Q-QR-igX"; */
+"i3Q-QR-igX.title" = "Title";
+
+/* Class = "UIViewController"; title = "PlaceTable"; ObjectID = "iJR-v9-Zjz"; */
+"iJR-v9-Zjz.title" = "PlaceTable";
+
+/* Class = "UIViewController"; title = "WelcomeScreen"; ObjectID = "icM-VC-pHO"; */
+"icM-VC-pHO.title" = "WelcomeScreen";
+
+/* Class = "UIButton"; normalTitle = "Add comment"; ObjectID = "if6-sn-KnE"; */
+"if6-sn-KnE.normalTitle" = "Add comment";
+
+/* Class = "UILabel"; text = "Средняя оценка"; ObjectID = "jE6-PX-Xj3"; */
+"jE6-PX-Xj3.text" = "Средняя оценка";
+
+/* Class = "UINavigationItem"; title = "Консультации"; ObjectID = "jqZ-It-w3N"; */
+"jqZ-It-w3N.title" = "Консультации";
+
+/* Class = "UILabel"; text = "* - обязательно в полный рост"; ObjectID = "kDZ-tf-oHA"; */
+"kDZ-tf-oHA.text" = "* - обязательно в полный рост";
+
+/* Class = "UILabel"; text = "Анкета стилиста"; ObjectID = "kYM-he-KBE"; */
+"kYM-he-KBE.text" = "Анкета стилиста";
+
+/* Class = "UILabel"; text = "P"; ObjectID = "kdS-ML-Qdu"; */
+"kdS-ML-Qdu.text" = "P";
+
+/* Class = "UILabel"; text = "Вход для профессионалов"; ObjectID = "koS-JX-pgK"; */
+"koS-JX-pgK.text" = "Вход для профессионалов";
+
+/* Class = "UITextField"; accessibilityIdentifier = "email"; ObjectID = "kub-eK-7mI"; */
+"kub-eK-7mI.accessibilityIdentifier" = "email";
+
+/* Class = "UIViewController"; title = "userProfileDetails"; ObjectID = "kzL-7H-s7k"; */
+"kzL-7H-s7k.title" = "userProfileDetails";
+
+/* Class = "UILabel"; text = "Цвет вен:"; ObjectID = "lAl-K0-npb"; */
+"lAl-K0-npb.text" = "Цвет вен:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "lUX-sr-Ytw"; */
+"lUX-sr-Ytw.text" = "Label";
+
+/* Class = "UIViewController"; title = "stylistRegistrationStep2"; ObjectID = "log-gD-EfO"; */
+"log-gD-EfO.title" = "stylistRegistrationStep2";
+
+/* Class = "UIButton"; accessibilityLabel = "0"; ObjectID = "m5X-D9-L0w"; */
+"m5X-D9-L0w.accessibilityLabel" = "0";
+
+/* Class = "UIButton"; normalTitle = "В полный рост"; ObjectID = "m5X-D9-L0w"; */
+"m5X-D9-L0w.normalTitle" = "В полный рост";
+
+/* Class = "UILabel"; text = "Запомнить меня"; ObjectID = "m6Z-qL-muq"; */
+"m6Z-qL-muq.text" = "Запомнить меня";
+
+/* Class = "UISegmentedControl"; mil-uv-Zqk.segmentTitles[0] = "0"; ObjectID = "mil-uv-Zqk"; */
+"mil-uv-Zqk.segmentTitles[0]" = "0";
+
+/* Class = "UISegmentedControl"; mil-uv-Zqk.segmentTitles[1] = "1"; ObjectID = "mil-uv-Zqk"; */
+"mil-uv-Zqk.segmentTitles[1]" = "1";
+
+/* Class = "UISegmentedControl"; mil-uv-Zqk.segmentTitles[2] = "2"; ObjectID = "mil-uv-Zqk"; */
+"mil-uv-Zqk.segmentTitles[2]" = "2";
+
+/* Class = "UISegmentedControl"; mil-uv-Zqk.segmentTitles[3] = "3"; ObjectID = "mil-uv-Zqk"; */
+"mil-uv-Zqk.segmentTitles[3]" = "3";
+
+/* Class = "UISegmentedControl"; mil-uv-Zqk.segmentTitles[4] = "4"; ObjectID = "mil-uv-Zqk"; */
+"mil-uv-Zqk.segmentTitles[4]" = "4";
+
+/* Class = "UISegmentedControl"; mil-uv-Zqk.segmentTitles[5] = "5"; ObjectID = "mil-uv-Zqk"; */
+"mil-uv-Zqk.segmentTitles[5]" = "5";
+
+/* Class = "UILabel"; text = "* - обязательно для заполнения"; ObjectID = "nMV-YW-MsN"; */
+"nMV-YW-MsN.text" = "* - обязательно для заполнения";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "nUY-EK-kEK"; */
+"nUY-EK-kEK.normalTitle" = "P";
+
+/* Class = "UILabel"; text = "Фото*"; ObjectID = "nUm-wK-Eso"; */
+"nUm-wK-Eso.text" = "Фото*";
+
+/* Class = "UILabel"; text = "стилисты/пользователи"; ObjectID = "ndg-Ec-Uy2"; */
+"ndg-Ec-Uy2.text" = "стилисты/пользователи";
+
+/* Class = "UINavigationItem"; title = "Просмотр заявки"; ObjectID = "o1U-V9-LNF"; */
+"o1U-V9-LNF.title" = "Просмотр заявки";
+
+/* Class = "UIButton"; normalTitle = "L"; ObjectID = "o3i-Eb-VgV"; */
+"o3i-Eb-VgV.normalTitle" = "L";
+
+/* Class = "UIViewController"; title = "Wardrobe"; ObjectID = "oI6-4G-7an"; */
+"oI6-4G-7an.title" = "Wardrobe";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "omQ-G5-f4E"; */
+"omQ-G5-f4E.normalTitle" = "Назад";
+
+/* Class = "UILabel"; text = "О себе:"; ObjectID = "pRY-yd-Al5"; */
+"pRY-yd-Al5.text" = "О себе:";
+
+/* Class = "UILabel"; text = "/средняя оценка"; ObjectID = "q1H-c0-Rcj"; */
+"q1H-c0-Rcj.text" = "/средняя оценка";
+
+/* Class = "UIButton"; normalTitle = "C"; ObjectID = "qVu-0N-5aY"; */
+"qVu-0N-5aY.normalTitle" = "C";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "qub-lh-UOV"; */
+"qub-lh-UOV.normalTitle" = "Далее";
+
+/* Class = "UIButton"; accessibilityLabel = "3"; ObjectID = "rlf-VV-ahO"; */
+"rlf-VV-ahO.accessibilityLabel" = "3";
+
+/* Class = "UIButton"; normalTitle = "Бедра"; ObjectID = "rlf-VV-ahO"; */
+"rlf-VV-ahO.normalTitle" = "Бедра";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "s6O-83-BEn"; */
+"s6O-83-BEn.normalTitle" = "P";
+
+/* Class = "UIViewController"; title = "stylistProfile"; ObjectID = "s9V-f6-4Z9"; */
+"s9V-f6-4Z9.title" = "stylistProfile";
+
+/* Class = "UIButton"; normalTitle = "C"; ObjectID = "sW7-D3-B6p"; */
+"sW7-D3-B6p.normalTitle" = "C";
+
+/* Class = "UIButton"; normalTitle = "Вход для пользователей"; ObjectID = "skl-Pa-jbe"; */
+"skl-Pa-jbe.normalTitle" = "Вход для пользователей";
+
+/* Class = "UILabel"; text = "реальным фото выше. Проверено:-)"; ObjectID = "svl-bw-fD0"; */
+"svl-bw-fD0.text" = "реальным фото выше. Проверено:-)";
+
+/* Class = "UIButton"; accessibilityLabel = "1"; ObjectID = "swu-gq-L59"; */
+"swu-gq-L59.accessibilityLabel" = "1";
+
+/* Class = "UIButton"; normalTitle = "Грудь"; ObjectID = "swu-gq-L59"; */
+"swu-gq-L59.normalTitle" = "Грудь";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "t4V-Oj-Xgg"; */
+"t4V-Oj-Xgg.normalTitle" = "Далее";
+
+/* Class = "UILabel"; text = "Цвет кожи:"; ObjectID = "tUJ-cH-nIh"; */
+"tUJ-cH-nIh.text" = "Цвет кожи:";
+
+/* Class = "UIButton"; normalTitle = "Назад"; ObjectID = "te3-TI-yYI"; */
+"te3-TI-yYI.normalTitle" = "Назад";
+
+/* Class = "UITextField"; placeholder = "Введите комментарий..."; ObjectID = "tiD-ZY-YNV"; */
+"tiD-ZY-YNV.placeholder" = "Введите комментарий...";
+
+/* Class = "UITextField"; accessibilityIdentifier = "dateBirth"; ObjectID = "u8p-pn-bPP"; */
+"u8p-pn-bPP.accessibilityIdentifier" = "dateBirth";
+
+/* Class = "UIButton"; normalTitle = "P"; ObjectID = "uLm-zo-MSV"; */
+"uLm-zo-MSV.normalTitle" = "P";
+
+/* Class = "UITextField"; accessibilityIdentifier = "login"; ObjectID = "uc3-F5-x2o"; */
+"uc3-F5-x2o.accessibilityIdentifier" = "login";
+
+/* Class = "UIButton"; accessibilityLabel = "userAuth"; ObjectID = "uy8-Ye-bAp"; */
+"uy8-Ye-bAp.accessibilityLabel" = "userAuth";
+
+/* Class = "UIButton"; normalTitle = "Войти"; ObjectID = "uy8-Ye-bAp"; */
+"uy8-Ye-bAp.normalTitle" = "Войти";
+
+/* Class = "UIButton"; normalTitle = "C"; ObjectID = "vc4-I6-abx"; */
+"vc4-I6-abx.normalTitle" = "C";
+
+/* Class = "UIViewController"; title = "UserEntrance"; ObjectID = "vcN-fb-AG4"; */
+"vcN-fb-AG4.title" = "UserEntrance";
+
+/* Class = "UILabel"; text = "Пол*:"; ObjectID = "vz7-y5-zNE"; */
+"vz7-y5-zNE.text" = "Пол*:";
+
+/* Class = "UIButton"; accessibilityLabel = "2"; ObjectID = "wSO-Dv-0g0"; */
+"wSO-Dv-0g0.accessibilityLabel" = "2";
+
+/* Class = "UIButton"; normalTitle = "Талия"; ObjectID = "wSO-Dv-0g0"; */
+"wSO-Dv-0g0.normalTitle" = "Талия";
+
+/* Class = "UIViewController"; title = "addNewPicture"; ObjectID = "wlo-hP-cWG"; */
+"wlo-hP-cWG.title" = "addNewPicture";
+
+/* Class = "UINavigationItem"; title = "Библиотека"; ObjectID = "wv0-Sf-AGn"; */
+"wv0-Sf-AGn.title" = "Библиотека";
+
+/* Class = "UIBarButtonItem"; title = "Место"; ObjectID = "xM5-yH-0lO"; */
+"xM5-yH-0lO.title" = "Место";
+
+/* Class = "UILabel"; text = "Загар:"; ObjectID = "xdQ-bR-irc"; */
+"xdQ-bR-irc.text" = "Загар:";
+
+/* Class = "UILabel"; text = "Пароль*:"; ObjectID = "y9x-i4-Kub"; */
+"y9x-i4-Kub.text" = "Пароль*:";
+
+/* Class = "UINavigationItem"; title = "Фигура"; ObjectID = "yNI-rx-P0R"; */
+"yNI-rx-P0R.title" = "Фигура";
+
+/* Class = "UILabel"; text = "* - доверие клиента консультанту с"; ObjectID = "yQn-hN-7lk"; */
+"yQn-hN-7lk.text" = "* - доверие клиента консультанту с";
+
+/* Class = "UITextField"; placeholder = "Введите логин или почту"; ObjectID = "ycG-cV-XMB"; */
+"ycG-cV-XMB.placeholder" = "Введите логин или почту";
+
+/* Class = "UILabel"; text = "Запомнить меня"; ObjectID = "yeZ-XC-qDu"; */
+"yeZ-XC-qDu.text" = "Запомнить меня";
+
+/* Class = "UILabel"; text = "Цвет волос:"; ObjectID = "yhB-Ea-mdm"; */
+"yhB-Ea-mdm.text" = "Цвет волос:";
+
+/* Class = "UISegmentedControl"; ywE-I0-StA.segmentTitles[0] = "Мужской"; ObjectID = "ywE-I0-StA"; */
+"ywE-I0-StA.segmentTitles[0]" = "Мужской";
+
+/* Class = "UISegmentedControl"; ywE-I0-StA.segmentTitles[1] = "Женский"; ObjectID = "ywE-I0-StA"; */
+"ywE-I0-StA.segmentTitles[1]" = "Женский";
+
+/* Class = "UIButton"; normalTitle = "W"; ObjectID = "zJe-Wd-V0i"; */
+"zJe-Wd-V0i.normalTitle" = "W";
+
+/* Class = "UIBarButtonItem"; title = "Назад"; ObjectID = "zL5-qI-hIl"; */
+"zL5-qI-hIl.title" = "Назад";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "zLC-X3-dGt"; */
+"zLC-X3-dGt.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "Далее"; ObjectID = "zYb-SH-pU5"; */
+"zYb-SH-pU5.normalTitle" = "Далее";
+
+/* Class = "UILabel"; text = "Регистрация"; ObjectID = "zYx-3v-LJf"; */
+"zYx-3v-LJf.text" = "Регистрация";
+
+/* Class = "UILabel"; text = "Описание:"; ObjectID = "zxU-wl-wb5"; */
+"zxU-wl-wb5.text" = "Описание:";

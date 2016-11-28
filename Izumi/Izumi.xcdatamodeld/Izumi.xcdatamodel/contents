@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15F34" minimumToolsVersion="Automatic">
+    <entity name="JSONData" representedClassName=".JSONData" syncable="YES">
+        <attribute name="dateBirth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstEntrance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="login" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="step2Bottom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="step2MidBottom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="step2MidUp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="step2Up" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="JSONData" positionX="-63" positionY="-18" width="128" height="225"/>
+    </elements>
+</model>
