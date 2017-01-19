@@ -106,7 +106,7 @@ class RegistrationStylistController: UIViewController, UIImagePickerControllerDe
                                        completion: nil)
             newMedia = true
         } else {
-            helperLib.showAlertMessage("err_no_cam")
+            helperLib.showAlertMessage("err_no_cam", viewControl: self)
         }
     }
     
@@ -124,7 +124,7 @@ class RegistrationStylistController: UIViewController, UIImagePickerControllerDe
                                        completion: nil)
             newMedia = false
         } else {
-            helperLib.showAlertMessage("err_no_lib")
+            helperLib.showAlertMessage("err_no_lib", viewControl: self)
         }
     }
     
@@ -153,7 +153,7 @@ class RegistrationStylistController: UIViewController, UIImagePickerControllerDe
     
     func image(_ image: UIImage, didFinishSavingWithError error: NSErrorPointer?, contextInfo:UnsafeRawPointer) {
         if error != nil {
-            helperLib.showAlertMessage("err_save")
+            helperLib.showAlertMessage("err_save", viewControl: self)
         }
     }
     
@@ -223,14 +223,14 @@ class RegistrationStylistController: UIViewController, UIImagePickerControllerDe
                         if Int(json["data"].stringValue) == 1 {
                             self.helperLib.goToScreen("StylistEntrance", parent: self)
                         } else {
-                            self.helperLib.showAlertMessage(json["data"].stringValue)
+                            self.helperLib.showAlertMessage(json["data"].stringValue, viewControl: self)
                         }
                     }
                 })
             } else if avatarImgView.image == nil {
-                helperLib.showAlertMessage("no_avatar");
+                helperLib.showAlertMessage("no_avatar", viewControl: self);
             } else if diplomaImgView.image == nil {
-                helperLib.showAlertMessage("no_diploma")
+                helperLib.showAlertMessage("no_diploma", viewControl: self)
             }
         }
     }

@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 
 class SecondScreen: UIViewController {
+    @IBOutlet weak var userInviteTextView: UITextView!
+    @IBOutlet weak var stylistInviteTextView: UITextView!
     
+    @IBOutlet weak var userEntranceButton: UIButton!
+    @IBOutlet weak var stylistEntranceButton: UIButton!
     let helperLib = Helper();
     
     @IBOutlet var userEnter: UIView!
@@ -18,6 +22,18 @@ class SecondScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        super.setGradient(viewController: self)
+        helperLib.textViewDecorator(
+            userInviteTextView,
+            stylistInviteTextView,
+            bordered: false
+        )
+        
+        helperLib.buttonDecorator(
+            userEntranceButton,
+            stylistEntranceButton
+        )
     }
     
     @IBAction func userEnterAction(_ sender: UIButton) {

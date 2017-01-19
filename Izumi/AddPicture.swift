@@ -70,7 +70,7 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                         self.pic_name.text = "";
                         self.pic_description.text = "";
                     } else {
-                        self.helperLib.showAlertMessage("err_pic")
+                        self.helperLib.showAlertMessage("err_pic", viewControl: self)
                     }
                 }
             })
@@ -95,7 +95,7 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                                        completion: nil)
             newMedia = true
         } else {
-            helperLib.showAlertMessage("err_no_cam")
+            helperLib.showAlertMessage("err_no_cam", viewControl: self)
         }
     }
     
@@ -113,7 +113,7 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                                        completion: nil)
             newMedia = false
         } else {
-            helperLib.showAlertMessage("err_no_lib")
+            helperLib.showAlertMessage("err_no_lib", viewControl: self)
         }
     }
         
@@ -141,7 +141,7 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSErrorPointer?, contextInfo:AnyObject) {
         if error != nil {
-            helperLib.showAlertMessage("err_save")
+            helperLib.showAlertMessage("err_save", viewControl: self)
         }
     }
     

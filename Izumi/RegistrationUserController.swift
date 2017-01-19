@@ -11,7 +11,7 @@ import UIKit
 import CoreData
 import MobileCoreServices
 
-class RegistrationUserController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let helper = Helper();
     let retJSON = LibraryJSON();
@@ -46,7 +46,11 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var dateBirth: UITextField!
     @IBOutlet weak var targetText: UITextView!
     @IBOutlet weak var backToStep1: UIButton!
+    @IBOutlet weak var backToLoginForm: UIButton!
     
+    @IBOutlet weak var finishRegistration: UIButton!
+    @IBOutlet weak var returnToStep2: UIButton!
+    @IBOutlet weak var nextToStep3: UIButton!
     @IBOutlet weak var fullPicture: UIImageView!
     
     @IBOutlet weak var eyeColor: UIImageView!
@@ -54,9 +58,15 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
     @IBOutlet weak var avatarPic: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
+        super.setGradient(viewController: self)
         super.viewWillAppear(animated)
         
-        if (self.restorationIdentifier == "userRegistrationStep1") {
+        if (self.restorationIdentifier == "UserRegistrationStep1") {
+            
+            helper.buttonDecorator(checkFields, backToLoginForm)
+            helper.textFieldDecorator(loginText, emailText, pwdText, dateBirth)
+            helper.textViewDecorator(targetText)
+            
             loginText.text = String(helper.loadUserDefaults("login"))
             emailText.text = helper.loadUserDefaults("email")
             dateBirth.text = helper.loadUserDefaults("dateBirth")
@@ -66,28 +76,34 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
             targetText.text = helper.loadUserDefaults("target")
         }
         
-        if (self.restorationIdentifier == "userRegistrationStep2") {
-            if (helper.loadUserDefaults("fullPicture").isEmpty == false) {
-                fullPicture.image = helper.loadImageFromLib("fullPicture")
-            }
+        if (self.restorationIdentifier == "UserRegistrationStep2") {
+            
+            helper.buttonDecorator(backToStep1, nextToStep3)
+            
+//            if (helper.loadUserDefaults("fullPicture").isEmpty == false) {
+//                fullPicture.image = helper.loadImageFromLib("fullPicture")
+//            }
         }
         
-        if (self.restorationIdentifier == "userRegistrationStep3") {
-            if (helper.loadUserDefaults("avatarPic").isEmpty == false) {
-                avatarPic.image = helper.loadImageFromLib("avatarPic")
-            }
-            if helper.loadUserDefaults("hair").isEmpty == false {
-                hairColor.text = hair[Int(helper.loadUserDefaults("hair"))!]
-            }
-            if helper.loadUserDefaults("skin").isEmpty == false {
-                skinColor.text = skin[Int(helper.loadUserDefaults("skin"))!]
-            }
-            if helper.loadUserDefaults("brown").isEmpty == false {
-                brownColor.text = brown[Int(helper.loadUserDefaults("brown"))!]
-            }
-            if helper.loadUserDefaults("venousColor").isEmpty == false {
-                venousColor.text = venous_color[Int(helper.loadUserDefaults("venousColor"))!]
-            }
+        if (self.restorationIdentifier == "UserRegistrationStep3") {
+            
+//            helper.buttonDecorator(returnToStep2, finishRegistration)
+//            
+//            if (helper.loadUserDefaults("avatarPic").isEmpty == false) {
+//                avatarPic.image = helper.loadImageFromLib("avatarPic")
+//            }
+//            if helper.loadUserDefaults("hair").isEmpty == false {
+//                hairColor.text = hair[Int(helper.loadUserDefaults("hair"))!]
+//            }
+//            if helper.loadUserDefaults("skin").isEmpty == false {
+//                skinColor.text = skin[Int(helper.loadUserDefaults("skin"))!]
+//            }
+//            if helper.loadUserDefaults("brown").isEmpty == false {
+//                brownColor.text = brown[Int(helper.loadUserDefaults("brown"))!]
+//            }
+//            if helper.loadUserDefaults("venousColor").isEmpty == false {
+//                venousColor.text = venous_color[Int(helper.loadUserDefaults("venousColor"))!]
+//            }
         }
     }
     
@@ -139,17 +155,17 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
             venousColor.text = venous_color[row];
             helper.saveUserDefaults(String(row), key: "venousColor")
         default:
-            helper.showAlertMessage("err_pick")
+            helper.showAlertMessage("err_pick", viewControl: self)
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (self.restorationIdentifier == "userRegistrationStep2") {
+        if (self.restorationIdentifier == "UserRegistrationStep2") {
             libDict = helper.returnFullBody()
             
             initGallery();
         }
-        if (self.restorationIdentifier == "userRegistrationStep3") {
+        if (self.restorationIdentifier == "UserRegistrationStep3") {
             additionalArray.append(skin)
             additionalArray.append(hair)
             additionalArray.append(brown)
@@ -203,7 +219,7 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
                                            completion: nil)
             newMedia = true
         } else {
-            helper.showAlertMessage("err_no_cam")
+            helper.showAlertMessage("err_no_cam", viewControl: self)
         }
     }
     
@@ -221,7 +237,7 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
                                        completion: nil)
             newMedia = false
         } else {
-            helper.showAlertMessage("err_no_lib")
+            helper.showAlertMessage("err_no_lib", viewControl: self)
         }
     }
     
@@ -238,8 +254,36 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
     @IBAction func datePickByTF(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
+        datePickerView.backgroundColor = self.view.backgroundColor
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(RegistrationUserController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.backgroundColor = self.view.backgroundColor
+        toolBar.barTintColor = self.view.backgroundColor
+        toolBar.tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton =
+            UIBarButtonItem(
+                title: "Done",
+                style: UIBarButtonItemStyle.plain,
+                target: self,
+                action: #selector(RegistrationUserController.donePicker)
+            )
+        
+        let spaceButton =
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        sender.inputAccessoryView = toolBar
+    }
+    
+    func donePicker(sender: UIBarButtonItem) {
+        dateBirth.resignFirstResponder()
     }
     
     func datePickerValueChanged(_ sender:UIDatePicker) {
@@ -253,7 +297,7 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
     }
     
     @IBAction func checkRequiredFields(_ sender: AnyObject) {
-        if (self.restorationIdentifier == "userRegistrationStep1") {
+        if (self.restorationIdentifier == "UserRegistrationStep1") {
             let allRFNE: Int = checkEmpty(loginText) + checkEmpty(pwdText) + checkEmpty(emailText) + checkEmpty(dateBirth);
             if (allRFNE == 0) {
                 helper.clearCoreData();
@@ -263,7 +307,7 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
                 helper.saveUserDefaults(dateBirth.text!, key: "dateBirth")
                 helper.saveUserDefaults(String(sexChanger.selectedSegmentIndex), key: "sex")
                 helper.saveUserDefaults(targetText.text!, key: "target")
-                helper.goToScreen("userRegistrationStep2", parent: self)
+                helper.goToScreen("UserRegistrationStep2", parent: self)
             }
         }
     }
@@ -280,6 +324,7 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
             result += 1;
         } else {
             tField.layer.borderWidth = 0;
+            helper.textFieldDecorator(tField)
         }
         return result;
     }
@@ -294,10 +339,10 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
             let image = info[UIImagePickerControllerOriginalImage]
                 as! UIImage
             
-            if (self.restorationIdentifier == "userRegistrationStep2") {
+            if (self.restorationIdentifier == "UserRegistrationStep2") {
                 fullPicture.image = image
                 helper.compressImageAndStore(image, keyStr: "fullPicture")
-            } else if (self.restorationIdentifier == "userRegistrationStep3") {
+            } else if (self.restorationIdentifier == "UserRegistrationStep3") {
                 avatarPic.image = image
                 helper.compressImageAndStore(image, keyStr: "avatarPic")
             }
@@ -314,7 +359,7 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
     
     func image(_ image: UIImage, didFinishSavingWithError error: NSErrorPointer?, contextInfo:UnsafeRawPointer) {
         if error != nil {
-            helper.showAlertMessage("err_save")
+            helper.showAlertMessage("err_save", viewControl: self)
         }
     }
     
@@ -343,11 +388,9 @@ class RegistrationUserController: UIViewController, UIImagePickerControllerDeleg
                 if Int(json["data"].stringValue) == 1 {
                     self.helper.goToScreen("UserEntrance", parent: self)
                 } else {
-                    self.helper.showAlertMessage(json["data"].stringValue)
+                    self.helper.showAlertMessage(json["data"].stringValue, viewControl: self)
                 }
             }
         }
     }
-    
-    
 }

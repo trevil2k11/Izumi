@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import CoreData
+import MobileCoreServices
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -28,9 +31,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-
 class AuthController: UIViewController {
-    
     fileprivate var helperLib = Helper();
     fileprivate var curlSender = CurlController();
     fileprivate var jsonLib = LibraryJSON();
@@ -47,9 +48,26 @@ class AuthController: UIViewController {
     @IBOutlet weak var saveMeUsr: UISwitch!
     @IBOutlet weak var saveMeStl: UISwitch!
     
+    @IBOutlet weak var regUsr: UIButton!
+    @IBOutlet weak var backUsr: UIButton!
+    
     @IBAction func regBeginAction(_ sender: UIButton) {
         helperLib.clearUserDefaultsInRegistration()
-        helperLib.goToScreen("userRegistrationStep1", parent: self)
+        helperLib.goToScreen("UserRegistrationStep1", parent: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.setGradient(viewController: self)
+        
+        if (self.restorationIdentifier! == "UserEntrance") {
+            helperLib.buttonDecorator(usrBtn, regUsr, backUsr)
+            helperLib.textFieldDecorator(usrLogin, usrPwd)
+        } else if (self.restorationIdentifier! == "StylistEntrance") {
+            helperLib.buttonDecorator(stlBtn)
+            helperLib.textFieldDecorator(stlLogin, stlPwd)
+        }
+        
+        super.viewWillAppear(animated)
     }
     
     override func viewDidLoad() {
@@ -98,9 +116,9 @@ class AuthController: UIViewController {
     @IBAction func tryToAuth(_ sender: UIButton!) {
         if (sender.accessibilityLabel == "userAuth") {
             if (usrLogin.text?.isEmpty == true) {
-                helperLib.showAlertMessage("err_no_login")
+                helperLib.showAlertMessage("err_no_login", viewControl: self)
             } else if (usrPwd.text?.isEmpty == true) {
-                helperLib.showAlertMessage("err_no_pass")
+                helperLib.showAlertMessage("err_no_pass", viewControl: self)
             } else {
                 self.helperLib.saveUserDefaults("user", key: "user_type")
                 self.helperLib.saveUserDefaults(self.usrLogin.text!, key: "userL")
@@ -109,9 +127,9 @@ class AuthController: UIViewController {
             }
         } else if (sender.accessibilityLabel == "stylistAuth"){
             if (stlLogin.text?.isEmpty == true) {
-                helperLib.showAlertMessage("err_no_login")
+                helperLib.showAlertMessage("err_no_login", viewControl: self)
             } else if (stlPwd.text?.isEmpty == true) {
-                helperLib.showAlertMessage("err_no_pass")
+                helperLib.showAlertMessage("err_no_pass", viewControl: self)
             } else {
                 self.helperLib.saveUserDefaults("stylist", key: "user_type")
                 self.helperLib.saveUserDefaults(self.stlLogin.text!, key: "userL")
@@ -143,9 +161,9 @@ class AuthController: UIViewController {
                         self.updateStylistActivity();
                         Timer.scheduledTimer(timeInterval: 300.0, target: self, selector: #selector(self.updateStylistActivity), userInfo: nil, repeats: true)
                     }
-                    self.helperLib.goToScreen("Library", parent: self)
+                    self.helperLib.goToScreen("libraryMain", parent: self)
                 } else {
-                    self.helperLib.showAlertMessage(res);
+                    self.helperLib.showAlertMessage(res, viewControl: self);
                 }
             }
         }

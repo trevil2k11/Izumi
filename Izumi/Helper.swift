@@ -35,13 +35,18 @@ class Helper {
         return jsonToSend(cntrlName: cntrlName, actionName: actionName, params: params).returnJsonString();
     }
     
-    func showAlertMessage(_ errName: String) {
-        let alertMessage = UIAlertView();
-        alertMessage.title = errStack.returnErrTitle(errName);
-        alertMessage.message = errStack.returnErrDescr(errName);
-        alertMessage.addButton(withTitle: "Ok");
+    func showAlertMessage(_ errName: String, viewControl: UIViewController) {
+        let alertMessage =
+            UIAlertController(
+                title: errStack.returnErrTitle(errName),
+                message: errStack.returnErrDescr(errName),
+                preferredStyle: .alert
+            )
         
-        alertMessage.show();
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertMessage.addAction(OKAction)
+        
+        viewControl.present(alertMessage, animated: true, completion:nil)
     }
     
     func showDataMessage(_ data: String) {
@@ -61,6 +66,15 @@ class Helper {
         shopMessage.addButton(withTitle: "Нет")
         
         shopMessage.show()
+    }
+    
+    func showNewMessage(title: String, description: String, viewControl: UIViewController){
+        let alertMessage = UIAlertController(title: title, message: description, preferredStyle: .actionSheet)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertMessage.addAction(OKAction)
+        
+        viewControl.present(alertMessage, animated: true, completion: nil)
     }
     
     func returnCyrillicAndJsoned(_ input : NSString) -> NSString{
@@ -155,6 +169,20 @@ class Helper {
     }
     
     func saveUserPictureArrayDefaults(_ data: [UIImage], key: String) {
+        defaults.set(data, forKey: key)
+        defaults.synchronize()
+    }
+    
+    func loadDefaultOrChecked(_ key: String)->Bool {
+        var result: Bool = false
+        
+        if let returnValue = defaults.bool(forKey: key) as? Bool {
+            result = returnValue
+        }
+        return result
+    }
+    
+    func setChecked(_ data: Bool, key: String) {
         defaults.set(data, forKey: key)
         defaults.synchronize()
     }
@@ -309,6 +337,42 @@ class Helper {
         return NSMutableAttributedString(string: text, attributes: attrsStd)
     }
     
+    func buttonDecorator(_ buttons: UIButton..., bordered: Bool = true) {
+        for button in buttons {
+            button.backgroundColor = .clear
+            if (bordered) {
+                button.layer.cornerRadius = 6
+                button.layer.borderWidth = 1
+                button.layer.borderColor = UIColor.white.cgColor
+            }
+            button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        }
+    }
+    
+    func textFieldDecorator(_ textFields: UITextField..., bordered: Bool = true) {
+        for textField in textFields {
+            textField.backgroundColor = .clear
+            if (bordered) {
+                textField.layer.cornerRadius = 6
+                textField.layer.borderWidth = 1
+                textField.layer.borderColor = UIColor.white.cgColor
+            }
+            textField.textColor = UIColor.white
+        }
+    }
+    
+    func textViewDecorator(_ textViews: UITextView..., bordered: Bool = true) {
+        for textView in textViews {
+            textView.backgroundColor = .clear
+            if (bordered) {
+                textView.layer.cornerRadius = 6
+                textView.layer.borderWidth = 1
+                textView.layer.borderColor = UIColor.white.cgColor
+            }
+            textView.textColor = UIColor.white
+        }
+    }
+    
     func returnKeyValCheck() -> [String:String] {
         return ["comment":"target","hair":"hair","skin":"skin","brown":"brown","venousColor":"venousColor",
                 "eyes":"eyes","eyesAdd":"eyesAdd","place":"place","fullPicture":"fullPicture",
@@ -353,20 +417,23 @@ class Helper {
     }
     
     func returnSkin() -> [String] {
-        return ["Фарфоровая, светлая","Светлая с оливковым оттенком",
-                "Светлая с персиковым оттенком","Сильно смуглая,плотная"]
+        return ["Белая/молочная (плохо загораю/сгораю)",
+                "Оливковая",
+                "Смуглая (хорошо загораю)"]
     }
     
     func returnHair() -> [String] {
-        return ["От светлого до темного с зол. оттенком",
-                "От светлого до темного без зол. оттенка",
-                "Брюнет","Блонд","Рыжий","Седой","Белый"]
+        return ["Светлый (блондин(-ка))",
+                "Брюнет(-ка)",
+                "Рыжий",
+                "Шатен",
+                "Русый (темный/светлый)"]
     }
     
     func returnBrown() -> [String] {
-        return ["Быстро загораю с желтоватым оттенком",
-                "Быстро загораю с красновато-коричневым оттенком оттенком",
-                "Легко обгораю с красным оттенком","Не загораю"]
+        return ["Белая/молочная (плохо загораю/сгораю)",
+                "Оливковая",
+                "Смуглая (хорошо загораю)"]
     }
     
     func returnVenous() -> [String] {

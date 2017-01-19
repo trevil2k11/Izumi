@@ -18,22 +18,27 @@ class LibraryCellTableViewCell: UITableViewCell {
     var pic_id: Int = 0;
     
     @IBOutlet weak var loadImage: UIImageView!
-    @IBOutlet weak var userRating: UILabel!
-    @IBOutlet weak var stylistRating: UILabel!
-    @IBOutlet weak var imageName: UILabel!
-    @IBOutlet weak var addCommentButton: UIButton!
+    @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var goToComments: UIButton!
+    @IBOutlet weak var starIt: UIButton!
     
     @IBOutlet weak var commentView: UITextView!
     
-    @IBOutlet weak var hiddenCommentView: UIView!
-    @IBOutlet weak var hiddenHideComment: UIButton!
-    @IBOutlet weak var hiddenCommentText: UITextField!
-    @IBOutlet weak var hiddenCommentSend: UIButton!
-    @IBOutlet weak var hiddenRating: UISegmentedControl!
+    let paragraphStyleBold = NSMutableParagraphStyle()
+    let paragraphStyleStd = NSMutableParagraphStyle()
+    
+    var attrsBold: [String: Any] = [:]
+    var attrsStd: [String: Any] = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        paragraphStyleBold.alignment = NSTextAlignment.left
+        paragraphStyleStd.alignment = NSTextAlignment.justified
+        
+        attrsBold = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSParagraphStyleAttributeName: paragraphStyleBold]
+        attrsStd = [NSParagraphStyleAttributeName: paragraphStyleStd]
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -49,9 +54,6 @@ class LibraryCellTableViewCell: UITableViewCell {
             self.activityIndicator.stopAnimating();
         }
         
-        self.imageName.text = dict["pic_name"]
-        self.userRating.text = dict["avg_user_rate"]?.isEmpty == true ? "0" : dict["avg_user_rate"];
-        self.stylistRating.text = dict["avg_stylist_rate"]?.isEmpty == true ? "0" : dict["avg_stylist_rate"];
         getComment(dict["id"]!)
     }
     
@@ -66,22 +68,19 @@ class LibraryCellTableViewCell: UITableViewCell {
     func addComment() {
         if self.libComment.count > 0 {
             let finMutStr = NSMutableAttributedString()
-            let paragraphStyleBold = NSMutableParagraphStyle()
-            paragraphStyleBold.alignment = NSTextAlignment.left
-            let paragraphStyleStd = NSMutableParagraphStyle()
-            paragraphStyleStd.alignment = NSTextAlignment.justified
-            
-            let attrsBold = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14),
-                             NSParagraphStyleAttributeName: paragraphStyleBold]
-            let attrsStd = [NSParagraphStyleAttributeName: paragraphStyleStd]
-            
-            for obj in self.libComment {
-                let header = NSMutableAttributedString(string: obj["header"]! + "\n", attributes: attrsBold)
-                header.append(NSAttributedString(string: obj["user_comment"]! + "\n", attributes: attrsStd))
+            if self.libComment.count > 1 {
+                let header = NSMutableAttributedString(string: self.libComment[0]["header"]! + "\n", attributes: attrsBold)
+                header.append(NSAttributedString(string: self.libComment[0]["user_comment"]! + "\n", attributes: attrsStd))
+                header.append(NSAttributedString(string: ".......(" + String(self.libComment.count) + ")\n", attributes: attrsStd))
+                finMutStr.append(header)
+            } else if self.libComment.count == 1 {
+                let header = NSMutableAttributedString(string: self.libComment[0]["header"]! + "\n", attributes: attrsBold)
+                header.append(NSAttributedString(string: self.libComment[0]["user_comment"]! + "\n", attributes: attrsStd))
                 finMutStr.append(header);
             }
             OperationQueue.main.addOperation {
                 self.commentView.attributedText = finMutStr.mutableCopy() as! NSAttributedString
+                self.rating.text = String(self.libComment.count)
             }
         }
     }

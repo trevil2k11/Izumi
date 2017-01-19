@@ -56,8 +56,8 @@ class MainUserProfile: UIViewController, UICollectionViewDataSource, UICollectio
         favoriteCollection.collectionViewLayout = layout
         favoriteCollection.backgroundColor = UIColor.white
         
-        let profile = returnJSON.returnUserProfile(helperLib.loadUserDefaults("user_id") as! String)
-        let favorites = returnJSON.returnBestPict(helperLib.loadUserDefaults("user_id") as! String)
+        let profile = returnJSON.returnUserProfile(helperLib.loadUserDefaults("user_id"))
+        let favorites = returnJSON.returnBestPict(helperLib.loadUserDefaults("user_id"))
         
         curlSender.sendData(profile) {result in
             DispatchQueue.main.async{

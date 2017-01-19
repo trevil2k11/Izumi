@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		20332FEF1DDA6388006003E8 /* fakeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20332FEE1DDA6388006003E8 /* fakeController.swift */; };
 		2037C2D71D9E1934001976E3 /* chatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037C2D61D9E1934001976E3 /* chatRoomController.swift */; };
+		204F3B851DECF4370056F9A0 /* LibraryControllerRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F3B841DECF4370056F9A0 /* LibraryControllerRequests.swift */; };
+		204F3B871DECF4520056F9A0 /* LibraryControllerSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F3B861DECF4520056F9A0 /* LibraryControllerSubscriptions.swift */; };
 		2055AB081D63C565005F8E63 /* AddPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB061D63C565005F8E63 /* AddPicture.swift */; };
 		2055AB091D63C565005F8E63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB071D63C565005F8E63 /* AppDelegate.swift */; };
 		2055AB0D1D63C57E005F8E63 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB0A1D63C57E005F8E63 /* AuthController.swift */; };
@@ -26,7 +28,7 @@
 		2055AB3D1D63C58E005F8E63 /* JSONData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB1B1D63C58E005F8E63 /* JSONData.xcdatamodeld */; };
 		2055AB3E1D63C58E005F8E63 /* JSONData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB1D1D63C58E005F8E63 /* JSONData+CoreDataProperties.swift */; };
 		2055AB3F1D63C58E005F8E63 /* LibraryCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB1E1D63C58E005F8E63 /* LibraryCellTableViewCell.swift */; };
-		2055AB401D63C58E005F8E63 /* LibraryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB1F1D63C58E005F8E63 /* LibraryController.swift */; };
+		2055AB401D63C58E005F8E63 /* LibraryControllerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB1F1D63C58E005F8E63 /* LibraryControllerMain.swift */; };
 		2055AB411D63C58E005F8E63 /* LibraryJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB201D63C58E005F8E63 /* LibraryJSON.swift */; };
 		2055AB421D63C58E005F8E63 /* MainStylistProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB211D63C58E005F8E63 /* MainStylistProfile.swift */; };
 		2055AB431D63C58E005F8E63 /* MainUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB221D63C58E005F8E63 /* MainUserProfile.swift */; };
@@ -50,12 +52,17 @@
 		2055AB5A1D63C5B1005F8E63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2055AB571D63C5B1005F8E63 /* Main.storyboard */; };
 		2055AB631D6BAED1005F8E63 /* OfferCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB621D6BAED1005F8E63 /* OfferCreationViewController.swift */; };
 		2055AB651D6BB25D005F8E63 /* CustomOfferCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB641D6BB25D005F8E63 /* CustomOfferCollectionViewCell.swift */; };
+		20DB61B31E2AEF470081AE6C /* UserRegistrationUIPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB61B21E2AEF470081AE6C /* UserRegistrationUIPageViewController.swift */; };
+		20DB61B51E2B92940081AE6C /* ViewControllerDecoratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB61B41E2B92940081AE6C /* ViewControllerDecoratorViewController.swift */; };
+		20DB61BA1E2D83B60081AE6C /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DB61B91E2D83B60081AE6C /* CheckBox.swift */; };
 		20E9E0511DD3E93E00299269 /* ShowCommentViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E9E0501DD3E93E00299269 /* ShowCommentViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		20332FEE1DDA6388006003E8 /* fakeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fakeController.swift; sourceTree = "<group>"; };
 		2037C2D61D9E1934001976E3 /* chatRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatRoomController.swift; sourceTree = "<group>"; };
+		204F3B841DECF4370056F9A0 /* LibraryControllerRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryControllerRequests.swift; sourceTree = "<group>"; };
+		204F3B861DECF4520056F9A0 /* LibraryControllerSubscriptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryControllerSubscriptions.swift; sourceTree = "<group>"; };
 		2055AAED1D63C4FC005F8E63 /* Izumi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Izumi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2055AB051D63C565005F8E63 /* Izumi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Izumi-Bridging-Header.h"; sourceTree = "<group>"; };
 		2055AB061D63C565005F8E63 /* AddPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPicture.swift; sourceTree = "<group>"; };
@@ -76,7 +83,7 @@
 		2055AB1C1D63C58E005F8E63 /* JSONData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JSONData.xcdatamodel; sourceTree = "<group>"; };
 		2055AB1D1D63C58E005F8E63 /* JSONData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2055AB1E1D63C58E005F8E63 /* LibraryCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryCellTableViewCell.swift; sourceTree = "<group>"; };
-		2055AB1F1D63C58E005F8E63 /* LibraryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryController.swift; sourceTree = "<group>"; };
+		2055AB1F1D63C58E005F8E63 /* LibraryControllerMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryControllerMain.swift; sourceTree = "<group>"; };
 		2055AB201D63C58E005F8E63 /* LibraryJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryJSON.swift; sourceTree = "<group>"; };
 		2055AB211D63C58E005F8E63 /* MainStylistProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStylistProfile.swift; sourceTree = "<group>"; };
 		2055AB221D63C58E005F8E63 /* MainUserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUserProfile.swift; sourceTree = "<group>"; };
@@ -104,6 +111,9 @@
 		206E7ED81DE91E4C007F1F31 /* Izumi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Izumi.entitlements; sourceTree = "<group>"; };
 		208E6F291D9CE9C40054264B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		208E6F2A1D9CE9C40054264B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		20DB61B21E2AEF470081AE6C /* UserRegistrationUIPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRegistrationUIPageViewController.swift; sourceTree = "<group>"; };
+		20DB61B41E2B92940081AE6C /* ViewControllerDecoratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDecoratorViewController.swift; sourceTree = "<group>"; };
+		20DB61B91E2D83B60081AE6C /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		20E9E0501DD3E93E00299269 /* ShowCommentViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCommentViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +175,7 @@
 				2055AB2B1D63C58E005F8E63 /* Structs.swift */,
 				2055AB201D63C58E005F8E63 /* LibraryJSON.swift */,
 				2055AB101D63C58E005F8E63 /* ErrorLibrary.swift */,
+				20DB61B91E2D83B60081AE6C /* CheckBox.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -186,7 +197,7 @@
 		2055AB5D1D6B9C5A005F8E63 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2055AB1F1D63C58E005F8E63 /* LibraryController.swift */,
+				2055AB1F1D63C58E005F8E63 /* LibraryControllerMain.swift */,
 				2055AB251D63C58E005F8E63 /* PlaceTableViewController.swift */,
 				2055AB271D63C58E005F8E63 /* RegistrationStylistController.swift */,
 				2055AB281D63C58E005F8E63 /* RegistrationUserController.swift */,
@@ -199,6 +210,9 @@
 				2037C2D61D9E1934001976E3 /* chatRoomController.swift */,
 				20E9E0501DD3E93E00299269 /* ShowCommentViewViewController.swift */,
 				20332FEE1DDA6388006003E8 /* fakeController.swift */,
+				204F3B841DECF4370056F9A0 /* LibraryControllerRequests.swift */,
+				204F3B861DECF4520056F9A0 /* LibraryControllerSubscriptions.swift */,
+				20DB61B21E2AEF470081AE6C /* UserRegistrationUIPageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -220,6 +234,7 @@
 				2055AB121D63C58E005F8E63 /* FirstScreen.swift */,
 				2055AB161D63C58E005F8E63 /* InnerShop.swift */,
 				2055AB2A1D63C58E005F8E63 /* SecondScreen.swift */,
+				20DB61B41E2B92940081AE6C /* ViewControllerDecoratorViewController.swift */,
 			);
 			name = CustomScreens;
 			sourceTree = "<group>";
@@ -338,7 +353,7 @@
 				2055AB371D63C58E005F8E63 /* ImageLoader.swift in Sources */,
 				2055AB451D63C58E005F8E63 /* PlaceTableViewController.swift in Sources */,
 				2055AB3C1D63C58E005F8E63 /* JSONData.swift in Sources */,
-				2055AB401D63C58E005F8E63 /* LibraryController.swift in Sources */,
+				2055AB401D63C58E005F8E63 /* LibraryControllerMain.swift in Sources */,
 				2055AB501D63C58E005F8E63 /* WardrobeCell.swift in Sources */,
 				2055AB3D1D63C58E005F8E63 /* JSONData.xcdatamodeld in Sources */,
 				2055AB421D63C58E005F8E63 /* MainStylistProfile.swift in Sources */,
@@ -352,11 +367,16 @@
 				2055AB481D63C58E005F8E63 /* RegistrationUserController.swift in Sources */,
 				20332FEF1DDA6388006003E8 /* fakeController.swift in Sources */,
 				2055AB361D63C58E005F8E63 /* Helper.swift in Sources */,
+				204F3B871DECF4520056F9A0 /* LibraryControllerSubscriptions.swift in Sources */,
+				20DB61BA1E2D83B60081AE6C /* CheckBox.swift in Sources */,
 				2055AB521D63C58E005F8E63 /* WardrobeHeaderCollectionReusableView.swift in Sources */,
 				2055AB4A1D63C58E005F8E63 /* SecondScreen.swift in Sources */,
 				2055AB0D1D63C57E005F8E63 /* AuthController.swift in Sources */,
 				2055AB441D63C58E005F8E63 /* PlaceCell.swift in Sources */,
+				20DB61B31E2AEF470081AE6C /* UserRegistrationUIPageViewController.swift in Sources */,
 				2037C2D71D9E1934001976E3 /* chatRoomController.swift in Sources */,
+				20DB61B51E2B92940081AE6C /* ViewControllerDecoratorViewController.swift in Sources */,
+				204F3B851DECF4370056F9A0 /* LibraryControllerRequests.swift in Sources */,
 				2055AB331D63C58E005F8E63 /* ErrorLibrary.swift in Sources */,
 				2055AB4B1D63C58E005F8E63 /* Structs.swift in Sources */,
 				2055AB081D63C565005F8E63 /* AddPicture.swift in Sources */,

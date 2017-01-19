@@ -1,15 +1,15 @@
 //
-//  LibraryController.swift
+//  LibraryControllerRequests.swift
 //  Izumi
 //
-//  Created by Ilya Kosolapov on 10.05.16.
+//  Created by Ilya Kosolapov on 29.11.16.
 //  Copyright © 2016 Ilya Kosolapov. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class LibraryController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class LibraryControllerRequests: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableLib: UITableView!
     
     @IBAction func profileReturn(_ sender: UIButton) {
@@ -34,11 +34,11 @@ class LibraryController: UIViewController, UITableViewDataSource, UITableViewDel
     
     let refreshControl = UIRefreshControl()
     var libArray: [[String:String]] = [];
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshControl.addTarget(self, action: #selector(LibraryController.refresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(LibraryControllerMain.refresh(_:)), for: UIControlEvents.valueChanged)
         
         tableLib.dataSource = self
         tableLib.delegate = self
@@ -64,7 +64,7 @@ class LibraryController: UIViewController, UITableViewDataSource, UITableViewDel
                         self.libArray.insert(obj, at: 0)
                     }
                 }
-            
+                
                 DispatchQueue.main.async {
                     refreshEnd(0)
                 }

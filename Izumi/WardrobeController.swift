@@ -57,7 +57,7 @@ class WardrobeController: UIViewController, UICollectionViewDataSource, UICollec
             
             self.present(nextViewController, animated: true, completion: nil)
         } else {
-            helperLib.showAlertMessage("err_no_pic")
+            helperLib.showAlertMessage("err_no_pic", viewControl: self)
         }
     }
     
