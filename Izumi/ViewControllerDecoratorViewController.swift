@@ -12,7 +12,15 @@ class ViewControllerDecoratorViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
 
+    @IBOutlet weak var listLeft: UIButton!
+    @IBOutlet weak var listRight: UIButton!
+    
+    @IBOutlet weak var triangleCheckBox: CheckBox!
+    @IBOutlet weak var revertTriangleCheckBox: CheckBox!
+    @IBOutlet weak var hourglassCheckBox: CheckBox!
+    
     var helperLib = Helper()
+    var descriptions = DescriptionLibrary()
     
     @IBOutlet weak var triangleHelp: UIButton!
     override func viewDidLoad() {
@@ -25,24 +33,36 @@ class ViewControllerDecoratorViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func clickOnCheckBox(_ sender: CheckBox) {
+        if sender.restorationIdentifier == "triangle" {
+            setFalse(sender, revertTriangleCheckBox, hourglassCheckBox)
+        } else if sender.restorationIdentifier == "revertTriangle" {
+            setFalse(sender, triangleCheckBox, hourglassCheckBox)
+        } else {
+            setFalse(sender, revertTriangleCheckBox, triangleCheckBox)
+        }
+    }
     
-    @IBAction func triangleHelpAction(_ sender: Any) {
-        helperLib.showNewMessage(title: "test", description: "test", viewControl: self)
+    func setFalse(_ checkBoxes: CheckBox...) {
+        helperLib.setChecked(true, key: checkBoxes[0].restorationIdentifier!)
+        helperLib.setChecked(false, key: checkBoxes[1].restorationIdentifier!)
+        helperLib.setChecked(false, key: checkBoxes[2].restorationIdentifier!)
+    }
+    
+    @IBAction func showDescription(_ sender: UIButton) {
+        let titleAndDescription
+            = descriptions.returnDescription(sender.restorationIdentifier!)
+        helperLib.showNewMessage(
+            title: titleAndDescription["title"]!,
+            description: titleAndDescription["descr"]!,
+            viewControl: self)
     }
 
     @IBAction func backButtonAction(_ sender: UIButton) {
+        helperLib.goToScreen("UserRegistrationStep1", parent: self)
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
+        helperLib.goToScreen("UserRegistrationStep3", parent: self)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

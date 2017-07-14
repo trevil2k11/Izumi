@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import MobileCoreServices
+import Photos
 
-class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     typealias NSErrorPointer = AutoreleasingUnsafeMutablePointer<NSError?>
     
@@ -20,17 +21,18 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     let retJSON = LibraryJSON();
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var uiviewForLibrary: UIView!
     override func viewDidLoad() {
+        collectionView.delegate = self;
+        collectionView.dataSource = self;
+        
         super.viewDidLoad()
         self.hideKbrdWhenTapAround();
+        setupPhotos();
     }
     
-    @IBOutlet weak var pic_name: UITextField!
-    @IBOutlet weak var pic_description: UITextField!
-    
-    @IBOutlet weak var cameraTake: UIBarButtonItem!
-    @IBOutlet weak var LibraryTake: UIBarButtonItem!
     @IBOutlet weak var uploadBtn: UIButton!
     
     @IBAction func returnToProfile(_ sender: UIButton) {
@@ -57,8 +59,6 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             
             var params: [String:String] = [:];
             params["user_id"] = helperLib.loadUserDefaults("user_id");
-            params["pic_name"] = pic_name.text;
-            params["descr"] = pic_description.text;
             params["pic_data"] = uploadPic;
             
             let sendStr = retJSON.returnUploadPicture(params);
@@ -67,8 +67,6 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                 OperationQueue.main.addOperation {
                     if Int(self.helperLib.getResFromJSON(result!)) == 1 {
                         self.imageView.image = nil;
-                        self.pic_name.text = "";
-                        self.pic_description.text = "";
                     } else {
                         self.helperLib.showAlertMessage("err_pic", viewControl: self)
                     }
@@ -99,24 +97,76 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         }
     }
     
-    @IBAction func libraryTakePicture(_ sender: UIBarButtonItem) {
-        if UIImagePickerController.isSourceTypeAvailable(
-            UIImagePickerControllerSourceType.savedPhotosAlbum) {
-            let imagePicker = UIImagePickerController()
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType =
-                UIImagePickerControllerSourceType.photoLibrary
-            imagePicker.mediaTypes = [kUTTypeImage as String]
-            imagePicker.allowsEditing = false
-            self.present(imagePicker, animated: true,
-                                       completion: nil)
-            newMedia = false
-        } else {
-            helperLib.showAlertMessage("err_no_lib", viewControl: self)
+    var favoritesLib: [UIImage] = []
+    
+    func setupPhotos() {
+        let imageManager = PHCachingImageManager()
+        
+        
+        PHPhotoLibrary.requestAuthorization { (status) in
+            switch status
+            {
+            case .authorized:
+                print("Good to proceed")
+                let fetchOptions = PHFetchOptions()
+                let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+                for i in 0..<allPhotos.count {
+                    let asset = allPhotos.object(at: i)
+                    
+                    let imSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
+                    let options = PHImageRequestOptions()
+                    options.deliveryMode = .fastFormat
+    
+                    imageManager.requestImage(
+                        for: asset,
+                        targetSize: imSize,
+                        contentMode: .aspectFill,
+                        options: options,
+                        resultHandler: { (UIImage, info) in
+                            self.favoritesLib.append(UIImage!)
+                    })
+                    self.collectionView.reloadData();
+                }
+            case .denied, .restricted:
+                print("Not allowed")
+            case .notDetermined:
+                print("Not determined yet")
+            }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! PhotoCell
         
+        let bColor: UIColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 0.3)
+        
+        cell.layer.borderColor = bColor.cgColor
+        cell.layer.borderWidth = 0
+        cell.layer.cornerRadius = 3
+        cell.backgroundColor = UIColor.white
+        cell.imgView.image = favoritesLib[indexPath.row]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        helperLib.showDataMessage(String(indexPath.row))
+        self.imageView.image = favoritesLib[indexPath.row]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.collectionView.bounds.height, height: self.collectionView.bounds.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return favoritesLib.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     
         let mediaType = info[UIImagePickerControllerMediaType] as! String

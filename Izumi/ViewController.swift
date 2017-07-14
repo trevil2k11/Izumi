@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKbrdWhenTapAround();
@@ -40,19 +39,11 @@ extension UIViewController {
     }
     
     func setGradient(viewController: UIViewController) {
-        let gradientLayer: CAGradientLayer = CAGradientLayer.init()
-        gradientLayer.frame = viewController.view.bounds
-        gradientLayer.colors =
-            [
-                UIColor.init(colorLiteralRed: 32/255, green: 23/255, blue: 164/255, alpha: 1).cgColor,
-                UIColor.init(colorLiteralRed: 148/255, green: 68/255, blue: 197/255, alpha: 1).cgColor
-            ]
-        
-        gradientLayer.startPoint = CGPoint.init(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint.init(x: 1.0, y: 1.0)
-        
-        gradientLayer.zPosition = -1000.0
-        
-        viewController.view.layer.addSublayer(gradientLayer)
+        viewController.view.backgroundColor = UIColor.init(colorLiteralRed: 94/255, green: 67/255, blue: 191/255, alpha: 1)
+//        let gradientLayer: CAGradientLayer = CAGradientLayer.init()
+//        gradientLayer.frame = viewController.view.bounds
+//        gradientLayer.backgroundColor = UIColor.init(colorLiteralRed: 94/255, green: 67/255, blue: 191/255, alpha: 1)
+//        gradientLayer.zPosition = -1000.0
+//        viewController.view.layer.addSublayer(gradientLayer)
     }
 }

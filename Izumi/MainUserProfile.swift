@@ -43,7 +43,10 @@ class MainUserProfile: UIViewController, UICollectionViewDataSource, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad();
         self.hideKbrdWhenTapAround();
-        self.doRoundCornerForAll();
+        
+        helperLib.doRound(avatarView)
+        helperLib.doRound(userStatus)
+        helperLib.doRound(userAvatarContainer)
         
         favoriteCollection.dataSource = self
         favoriteCollection.delegate = self
@@ -71,21 +74,7 @@ class MainUserProfile: UIViewController, UICollectionViewDataSource, UICollectio
             }
         }
     }
-    
-    func doRoundCornerForAll() {
-        self.avatarView.layer.cornerRadius = self.avatarView.frame.size.width / 2;
-        self.avatarView.clipsToBounds = true;
-        
-        self.userAvatarContainer.layer.cornerRadius = self.userAvatarContainer.frame.size.width / 2;
-        self.userAvatarContainer.clipsToBounds = true;
-        
-        self.userAvatarContainer.layer.borderWidth = 1.0;
-        self.userAvatarContainer.layer.borderColor = UIColor.magenta.cgColor;
-        
-        self.userStatus.layer.cornerRadius = self.userStatus.frame.size.width / 2;
-        self.userStatus.clipsToBounds = true;
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdenifier, for: indexPath) as! FavoritesCell
         

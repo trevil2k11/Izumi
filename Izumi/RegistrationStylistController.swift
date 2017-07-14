@@ -39,9 +39,31 @@ class RegistrationStylistController: UIViewController, UIImagePickerControllerDe
     
     @IBOutlet weak var registrationFinishBtn: UIButton!
     
-    
     var newMedia: Bool?
     var currentImgView: UIImageView?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.setGradient(viewController: self)
+        super.viewWillAppear(animated)
+        
+        if (self.restorationIdentifier == "stylistRegistrationStep1") {
+            helperLib.textFieldDecorator(
+                nicknameField,
+                passwordField,
+                fioField,
+                emailField,
+                dateBirth,
+                educationField,
+                expirienceField,
+                projectsField
+            )
+            helperLib.buttonDecorator(nextButtonStep1)
+        }
+        
+        if self.restorationIdentifier == "stylistRegistrationStep2" {
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +109,6 @@ class RegistrationStylistController: UIViewController, UIImagePickerControllerDe
         } else {
             libraryTakePicture()
         }
-        
     }
     
     func cameraTakePicture() {
@@ -173,9 +194,16 @@ class RegistrationStylistController: UIViewController, UIImagePickerControllerDe
             result += 1;
         } else {
             tField.layer.borderWidth = 0;
+            helperLib.textFieldDecorator(tField)
         }
         return result;
     }
+
+    @IBAction func backToMainScreen(_ sender: UIButton) {
+        helperLib.clearStylistDefaultInRegistration();
+        helperLib.goToScreen(sender.restorationIdentifier!, parent: self)
+    }
+    
     
     @IBAction func checkFieldsAndGoToStep2(_ sender: UIButton) {
         if self.restorationIdentifier == "stylistRegistrationStep1" {

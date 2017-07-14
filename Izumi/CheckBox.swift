@@ -12,28 +12,34 @@ class CheckBox: UIButton {
 
     let helperLib = Helper()
     
-    let imgChecked: UIImage = #imageLiteral(resourceName: "checked")
-    let imgUnchecked: UIImage = #imageLiteral(resourceName: "unchecked")
+    @IBInspectable var imgChecked: UIImage = #imageLiteral(resourceName: "checked")
+    @IBInspectable var imgUnchecked: UIImage = #imageLiteral(resourceName: "unchecked")
 
-    var isChecked: Bool = false {
-        didSet {
-            if isChecked == true {
-                self.setImage(imgChecked, for: .normal)
-            } else {
-                self.setImage(imgUnchecked, for: .normal)
-            }
-        }
-    }
+    @IBInspectable var colorForSetting: UIColor = UIColor.white
+    
+    @IBInspectable var isChecked: Bool = false
     
     override func awakeFromNib() {
         self.addTarget(self, action: #selector(CheckBox.buttonClicked), for: .touchUpInside)
-        self.isChecked = helperLib.loadDefaultOrChecked("figureType")
+        self.isSelected = helperLib.loadDefaultOrChecked(self.restorationIdentifier!)
+        
+        setByBool()
     }
     
     func buttonClicked(sender: UIButton) {
         if (sender == self) {
             isChecked = !isChecked
-            helperLib.setChecked(isChecked, key: "figureSelection")
+            helperLib.setChecked(isChecked, key: self.restorationIdentifier!)
+        }
+        
+        setByBool()
+    }
+    
+    func setByBool() {
+        if (isChecked) {
+            self.setImage(imgChecked, for: .normal)
+        } else {
+            self.setImage(imgUnchecked, for: .normal)
         }
     }
 }

@@ -51,9 +51,12 @@ class AuthController: UIViewController {
     @IBOutlet weak var regUsr: UIButton!
     @IBOutlet weak var backUsr: UIButton!
     
+    @IBOutlet weak var regStl: UIButton!
+    @IBOutlet weak var backStl: UIButton!
+    
     @IBAction func regBeginAction(_ sender: UIButton) {
         helperLib.clearUserDefaultsInRegistration()
-        helperLib.goToScreen("UserRegistrationStep1", parent: self)
+        helperLib.goToScreen(sender.restorationIdentifier!, parent: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +66,7 @@ class AuthController: UIViewController {
             helperLib.buttonDecorator(usrBtn, regUsr, backUsr)
             helperLib.textFieldDecorator(usrLogin, usrPwd)
         } else if (self.restorationIdentifier! == "StylistEntrance") {
-            helperLib.buttonDecorator(stlBtn)
+            helperLib.buttonDecorator(stlBtn, regStl, backStl)
             helperLib.textFieldDecorator(stlLogin, stlPwd)
         }
         

@@ -135,6 +135,11 @@ class Helper {
         return (returnString)!;
     }
     
+    func getMainColor()->UIColor {
+        return UIColor.init(colorLiteralRed: 94/255, green: 67/255, blue: 191/255, alpha: 1)
+        //+5/-3/-6
+    }
+    
     func clearCoreData()->Void {
         let dataFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "JSONData")
         do {
@@ -168,9 +173,22 @@ class Helper {
         defaults.synchronize()
     }
     
+    func saveEyeColor(_ data: UIColor, key: String) {
+        defaults.set(data, forKey: key)
+        defaults.synchronize()
+    }
+    
     func saveUserPictureArrayDefaults(_ data: [UIImage], key: String) {
         defaults.set(data, forKey: key)
         defaults.synchronize()
+    }
+    
+    func loadEyeColor(key: String) -> UIColor {
+        if let result:UIColor = defaults.object(forKey: key) as! UIColor! {
+            return result
+        } else {
+            return UIColor.gray
+        }
     }
     
     func loadDefaultOrChecked(_ key: String)->Bool {
@@ -187,12 +205,12 @@ class Helper {
         defaults.synchronize()
     }
     
-    func loadUserDefaults(_ key: String)->String{
+    func loadUserDefaults(_ key: String, defaultValue: String = "")->String{
         var result: String?
         if let returnString = defaults.string(forKey: key) {
             result = returnString
         } else {
-            result = ""
+            result = defaultValue
         }
         return result!
     }
@@ -229,6 +247,16 @@ class Helper {
             defaults.set(nil, forKey: val)
         }
     }
+    
+    func clearSimpleDefaultInRegistration() {
+        let keyVal: [String:String] = self.returnStylistKeyVal()
+        
+        for (key,val) in keyVal {
+            defaults.set(nil, forKey: key)
+            defaults.set(nil, forKey: val)
+        }
+    }
+
     
     func returnDictFromJSON(_ result: NSString)->[[String:String]] {
         let data = result.data(using: String.Encoding.utf8.rawValue);
@@ -303,8 +331,6 @@ class Helper {
         return CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault, string as CFString!, ":/?@!$&'()*+,;=" as CFString!, CFStringBuiltInEncodings.UTF8.rawValue) as String
     }
     
-    
-    
     func getThingsByPartname(_ shelf: Array<thing>, partName: String) -> Array<thing> {
         var retArray: Array<thing> = []
         if shelf.count > 0 {
@@ -339,9 +365,10 @@ class Helper {
     
     func buttonDecorator(_ buttons: UIButton..., bordered: Bool = true) {
         for button in buttons {
+//            button.backgroundColor = UIColor.init(colorLiteralRed: 94/255, green: 67/255, blue: 191/255, alpha: 1)
             button.backgroundColor = .clear
             if (bordered) {
-                button.layer.cornerRadius = 6
+                button.layer.cornerRadius = 0
                 button.layer.borderWidth = 1
                 button.layer.borderColor = UIColor.white.cgColor
             }
@@ -352,8 +379,9 @@ class Helper {
     func textFieldDecorator(_ textFields: UITextField..., bordered: Bool = true) {
         for textField in textFields {
             textField.backgroundColor = .clear
+            textField.font =  UIFont(name: "Muller", size: 20.0)
             if (bordered) {
-                textField.layer.cornerRadius = 6
+                textField.layer.cornerRadius = 0
                 textField.layer.borderWidth = 1
                 textField.layer.borderColor = UIColor.white.cgColor
             }
@@ -364,6 +392,7 @@ class Helper {
     func textViewDecorator(_ textViews: UITextView..., bordered: Bool = true) {
         for textView in textViews {
             textView.backgroundColor = .clear
+            textView.font =  UIFont(name: "Muller", size: 20.0)
             if (bordered) {
                 textView.layer.cornerRadius = 6
                 textView.layer.borderWidth = 1
@@ -371,6 +400,33 @@ class Helper {
             }
             textView.textColor = UIColor.white
         }
+    }
+    
+    func doRound(_ objects: UIImageView...) {
+        for object in objects {
+            object.layer.cornerRadius = object.frame.size.width / 2;
+            object.clipsToBounds = true;
+        }
+    }
+    
+    func doRound(_ objects: UIView..., needBorder: Bool = true) {
+        for object in objects {
+            object.layer.cornerRadius = object.frame.size.width / 2;
+            object.clipsToBounds = true;
+            
+            if (needBorder) {
+                object.layer.borderWidth = 1.0;
+                object.layer.borderColor = UIColor.magenta.cgColor;
+            }
+        }
+    }
+    
+    func doRound(_ objects: UILabel...) {
+        for label in objects {
+            label.layer.cornerRadius = label.frame.size.width / 2;
+            label.clipsToBounds = true;
+        }
+        
     }
     
     func returnKeyValCheck() -> [String:String] {
@@ -392,28 +448,8 @@ class Helper {
                 "avatar":"avatar","diploma":"diploma"];
     }
     
-    func returnBodyUpLib() -> [String] {
-        return ["UpperBodyLeft","UpperBodyMid","UpperBodyRight"];
-    }
-    
-    func returnMidUpperLib() -> [String] {
-        return ["MidBodyUpLeft","MidBodyUpMid","MidBodyUpRight"];
-    }
-    
-    func returnMidBottomLib() -> [String] {
-        return ["MidBodyBotLeft","MidBodyBotMid","MidBodyBotRight"];
-    }
-    
-    func returnBodyBottomLib() -> [String] {
-        return ["BottomBodyLeft","BottomBodyMid","BottomBodyRight"];
-    }
-    
-    func returnFullBody() -> [[String]] {
-        return [self.returnBodyUpLib(),self.returnMidUpperLib(),self.returnMidBottomLib(),self.returnBodyBottomLib()]
-    }
-    
-    func returnBodyKeys() -> [String] {
-        return ["UpperBody","MidBodyUp","MidBodyBot","BottomBody"]
+    func returnSimpleKeyVal() -> [String:String] {
+        return ["login":"login","pwd":"pwd","user_type":"isStylist","avatar":"avatar","diploma":"diploma"];
     }
     
     func returnSkin() -> [String] {
@@ -438,5 +474,17 @@ class Helper {
     
     func returnVenous() -> [String] {
         return ["Голубоватый оттенок","Зеленоватый оттенок"]
+    }
+    
+    func returnTriangleHelpText() -> String {
+        return "Мы выбрали самые часто встречающиеся типы фигур. Обратите внимание как распредёлен Ваш вес: какая часть 'перевешивает'. Основной вес приходится на низ (бёдра) - Ваш тип фигуры 'треугольник'"
+    }
+    
+    func returnRevertTriangleText() -> String {
+        return "Мы выбрали самые часто встречающиеся типы фигур. Обратите внимание как распредёлен Ваш вес: какая часть 'перевешивает'. Основной вес приходится на верх (грудная клетка массивнее бёдер) - Ваш тип фигуры 'перевернутый треугольник'"
+    }
+    
+    func returnHourglassText() -> String {
+        return "Мы выбрали самые часто встречающиеся типы фигур. Обратите внимание как распредёлен Ваш вес: какая часть 'перевешивает'. Верх и низ фигуры уравновешены (грудная клетка и плечи примерно того же объёма, как бёдра) - Ваш тип фигуры 'песочные часы'"
     }
 }

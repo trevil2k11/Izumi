@@ -17,26 +17,13 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     let retJSON = LibraryJSON();
     let curlSender = CurlController();
     
-    var bodyUpLib: [String] = [];
-    var bodyMidUpperLib: [String] = [];
-    var bodyMidBottomLib: [String] = [];
-    var bodyBottomLib: [String] = [];
-    var bodyKeys: [String] = [];
-    
     var skin: [String] = [];
     var hair: [String] = [];
-    var brown: [String] = [];
-    var venous_color: [String] = [];
     
     var additionalArray:Array<Array<String>> = []
     var libDict:Array<Array<String>> = [];
     
-    var selectedLibrary: Int = 0;
-    var currentKey: String = "UpperBody";
     var newMedia: Bool?
-    
-    @IBOutlet weak var bodyImg: UIImageView!
-    @IBOutlet weak var bodyStepper: UIStepper!
     
     @IBOutlet weak var checkFields: UIButton!
     @IBOutlet weak var loginText: UITextField!
@@ -45,87 +32,87 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var dateBirth: UITextField!
     @IBOutlet weak var targetText: UITextView!
-    @IBOutlet weak var backToStep1: UIButton!
     @IBOutlet weak var backToLoginForm: UIButton!
     
     @IBOutlet weak var finishRegistration: UIButton!
-    @IBOutlet weak var returnToStep2: UIButton!
-    @IBOutlet weak var nextToStep3: UIButton!
-    @IBOutlet weak var fullPicture: UIImageView!
+    @IBOutlet weak var backToStep2: UIButton!
+    @IBOutlet weak var backToStep3: UIButton!
+    @IBOutlet weak var nextToStep4: UIButton!
     
     @IBOutlet weak var eyeColor: UIImageView!
+    @IBOutlet weak var grayColorButton: CheckBox!
+    @IBOutlet weak var blueColorButton: CheckBox!
+    @IBOutlet weak var brownColorButton: CheckBox!
+    @IBOutlet weak var greenColorButton: CheckBox!
     
     @IBOutlet weak var avatarPic: UIImageView!
+    @IBOutlet weak var avatarContainer: UIView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.setGradient(viewController: self)
         super.viewWillAppear(animated)
         
         if (self.restorationIdentifier == "UserRegistrationStep1") {
-            
             helper.buttonDecorator(checkFields, backToLoginForm)
             helper.textFieldDecorator(loginText, emailText, pwdText, dateBirth)
-            helper.textViewDecorator(targetText)
-            
             loginText.text = String(helper.loadUserDefaults("login"))
             emailText.text = helper.loadUserDefaults("email")
             dateBirth.text = helper.loadUserDefaults("dateBirth")
             if (helper.loadUserDefaults("sex").isEmpty == false) {
               sexChanger.selectedSegmentIndex = Int(helper.loadUserDefaults("sex"))!
             }
-            targetText.text = helper.loadUserDefaults("target")
-        }
-        
-        if (self.restorationIdentifier == "UserRegistrationStep2") {
-            
-            helper.buttonDecorator(backToStep1, nextToStep3)
-            
-//            if (helper.loadUserDefaults("fullPicture").isEmpty == false) {
-//                fullPicture.image = helper.loadImageFromLib("fullPicture")
-//            }
         }
         
         if (self.restorationIdentifier == "UserRegistrationStep3") {
+            helper.buttonDecorator(backToStep2, nextToStep4)
             
-//            helper.buttonDecorator(returnToStep2, finishRegistration)
-//            
-//            if (helper.loadUserDefaults("avatarPic").isEmpty == false) {
-//                avatarPic.image = helper.loadImageFromLib("avatarPic")
-//            }
-//            if helper.loadUserDefaults("hair").isEmpty == false {
-//                hairColor.text = hair[Int(helper.loadUserDefaults("hair"))!]
-//            }
-//            if helper.loadUserDefaults("skin").isEmpty == false {
-//                skinColor.text = skin[Int(helper.loadUserDefaults("skin"))!]
-//            }
-//            if helper.loadUserDefaults("brown").isEmpty == false {
-//                brownColor.text = brown[Int(helper.loadUserDefaults("brown"))!]
-//            }
-//            if helper.loadUserDefaults("venousColor").isEmpty == false {
-//                venousColor.text = venous_color[Int(helper.loadUserDefaults("venousColor"))!]
-//            }
+            let eyeCl:UIColor = helper.loadEyeColor(key: "eyeColor")
+            
+            for singleSub in eyeColor.subviews {
+                if singleSub.restorationIdentifier == "eyeColor" {
+                    (singleSub as! PolyShape).setColor(
+                        newColor: eyeCl,
+                        rect: eyeColor.bounds
+                    )
+                    
+                    for element in colorButtonsGroup.subviews {
+                        if (eyeCl != (element as! CheckBox).value(forKeyPath: "colorForSetting") as! UIColor
+                                &&
+                            element.superclass == UIButton.self) {
+                            (element as! CheckBox).isChecked = false;
+                        } else {
+                            (element as! CheckBox).isChecked = true;
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (self.restorationIdentifier == "UserRegistrationStep4") {
+            helper.buttonDecorator(backToStep3, finishRegistration)
+            helper.textFieldDecorator(skinColor, hairColor)
+            helper.textViewDecorator(targetText)
+            
+            if helper.loadUserDefaults("hair").isEmpty == false {
+                hairColor.text = hair[Int(helper.loadUserDefaults("hair"))!]
+            }
+            if helper.loadUserDefaults("skin").isEmpty == false {
+                skinColor.text = skin[Int(helper.loadUserDefaults("skin"))!]
+            }
+
+            targetText.text = helper.loadUserDefaults("target")
         }
     }
     
     @IBOutlet weak var skinColor: UITextField!
-    @IBOutlet weak var brownColor: UITextField!
     @IBOutlet weak var hairColor: UITextField!
-    @IBOutlet weak var venousColor: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad();
         self.hideKbrdWhenTapAround();
         
-        bodyUpLib = helper.returnBodyUpLib()
-        bodyMidUpperLib = helper.returnMidUpperLib()
-        bodyMidBottomLib = helper.returnMidBottomLib()
-        bodyBottomLib = helper.returnBodyBottomLib()
-        bodyKeys = helper.returnBodyKeys()
-        
         skin = helper.returnSkin()
         hair = helper.returnHair()
-        brown = helper.returnBrown()
-        venous_color = helper.returnVenous()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -148,33 +135,21 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
         case "1":
             hairColor.text = hair[row];
             helper.saveUserDefaults(String(row), key: "hair")
-        case "2":
-            brownColor.text = brown[row];
-            helper.saveUserDefaults(String(row), key: "brown")
-        case "3":
-            venousColor.text = venous_color[row];
-            helper.saveUserDefaults(String(row), key: "venousColor")
         default:
             helper.showAlertMessage("err_pick", viewControl: self)
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (self.restorationIdentifier == "UserRegistrationStep2") {
-            libDict = helper.returnFullBody()
-            
-            initGallery();
-        }
         if (self.restorationIdentifier == "UserRegistrationStep3") {
+            helper.doRound(avatarContainer, needBorder: false)
+            drawEyeColor(rect: eyeColor.bounds)
+        } else if (self.restorationIdentifier == "UserRegistrationStep4") {
             additionalArray.append(skin)
             additionalArray.append(hair)
-            additionalArray.append(brown)
-            additionalArray.append(venous_color)
             
             initPicker("0", tField: skinColor)
             initPicker("1", tField: hairColor)
-            initPicker("2", tField: brownColor)
-            initPicker("3", tField: venousColor)
         }
     }
 
@@ -186,22 +161,6 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
         tField.inputView = pickView
         
         return pickView
-    }
-    
-    @IBAction func changeGallery(_ sender: UIButton) {
-        selectedLibrary = Int(sender.accessibilityLabel!)!;
-        currentKey = sender.restorationIdentifier!;
-        initGallery();
-    }
-    
-    func initGallery() {
-        if (helper.loadUserDefaults(currentKey).isEmpty == false) {
-            bodyImg.image = UIImage(named: libDict[selectedLibrary][Int(helper.loadUserDefaults(currentKey))!])
-            bodyStepper.value = Double(helper.loadUserDefaults(currentKey))!
-        } else {
-            bodyImg.image = UIImage(named: libDict[Int(selectedLibrary)][0])
-            bodyStepper.value = Double(0)
-        }
     }
     
     @IBAction func getCameraPict(_ sender: UIButton) {
@@ -241,28 +200,44 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
+    @IBOutlet weak var colorButtonsGroup: UIView!
+    
     @IBAction func changeEyeColor(_ sender: UIButton) {
-        eyeColor.backgroundColor = sender.backgroundColor
+        for singleSub in eyeColor.subviews {
+            if singleSub.restorationIdentifier == "eyeColor" {
+                (singleSub as! PolyShape).setColor(
+                    newColor: sender.value(forKey: "colorForSetting") as! UIColor,
+                    rect: eyeColor.bounds
+                )
+                
+                for element in colorButtonsGroup.subviews {
+                    if (sender.restorationIdentifier != (element as! CheckBox).restorationIdentifier
+                            &&
+                        element.superclass == UIButton.self) {
+                        (element as! CheckBox).isChecked = false;
+                    }
+                }
+            }
+        }
     }
     
-    
-    @IBAction func changePict(_ sender: UIStepper) {
-        bodyImg.image = UIImage(named: libDict[selectedLibrary][Int(sender.value)])
-        helper.saveUserDefaults(String(Int(sender.value)), key: currentKey)
+    func drawEyeColor(rect: CGRect)->()
+    {
+        let newShape = PolyShape()
+        newShape.restorationIdentifier = "eyeColor"
+        newShape.mainColor = UIColor.blue
+        newShape.drawRingFittingInsideView(rect: rect)
+        eyeColor.addSubview(newShape)
     }
     
     @IBAction func datePickByTF(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.date
-        datePickerView.backgroundColor = self.view.backgroundColor
-        sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(RegistrationUserController.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        datePickerView.setValue(UIColor.white, forKey: "textColor")
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
-        toolBar.backgroundColor = self.view.backgroundColor
-        toolBar.barTintColor = self.view.backgroundColor
-        toolBar.tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         toolBar.sizeToFit()
         
         let doneButton =
@@ -276,10 +251,33 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
         let spaceButton =
             UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
-        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.setItems([spaceButton, doneButton], animated: true)
         toolBar.isUserInteractionEnabled = true
         
+        addGradient(toolBar)
+        addGradient(datePickerView)
+        
+        sender.inputView = datePickerView
         sender.inputAccessoryView = toolBar
+    }
+    
+    func addGradient(_ objects: AnyObject...) {
+        for object in objects {
+            let gradientLayer: CAGradientLayer = CAGradientLayer.init()
+            gradientLayer.frame = object.bounds
+            gradientLayer.colors =
+                [
+                    UIColor.init(colorLiteralRed: 32/255, green: 23/255, blue: 164/255, alpha: 1).cgColor,
+                    UIColor.init(colorLiteralRed: 148/255, green: 68/255, blue: 197/255, alpha: 1).cgColor
+            ]
+            
+            gradientLayer.startPoint = CGPoint.init(x: 0.0, y: 0.0)
+            gradientLayer.endPoint = CGPoint.init(x: 1.0, y: 1.0)
+            
+            gradientLayer.zPosition = -1000.0
+            
+            object.layer.addSublayer(gradientLayer)
+        }
     }
     
     func donePicker(sender: UIBarButtonItem) {
@@ -306,7 +304,6 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
                 helper.saveUserDefaults(emailText.text!, key: "email")
                 helper.saveUserDefaults(dateBirth.text!, key: "dateBirth")
                 helper.saveUserDefaults(String(sexChanger.selectedSegmentIndex), key: "sex")
-                helper.saveUserDefaults(targetText.text!, key: "target")
                 helper.goToScreen("UserRegistrationStep2", parent: self)
             }
         }
@@ -328,7 +325,24 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
         }
         return result;
     }
+    
+    @IBAction func goToNextStepAction(_ sender: UIButton) {
+        if (self.restorationIdentifier == "UserRegistrationStep3") {
+            
+            helper.saveEyeColor(getPickedColor(), key: "eyeColor")
+        }
+        
+        helper.goToScreen(sender.restorationIdentifier!, parent: self)
+    }
 
+    func getPickedColor()->UIColor {
+        if (grayColorButton.isChecked == true) {return grayColorButton.colorForSetting}
+        else if (greenColorButton.isChecked == true) {return greenColorButton.colorForSetting}
+        else if (blueColorButton.isChecked == true) {return blueColorButton.colorForSetting}
+        else {return brownColorButton.colorForSetting}
+        
+    }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         let mediaType = info[UIImagePickerControllerMediaType] as! String
@@ -339,17 +353,22 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
             let image = info[UIImagePickerControllerOriginalImage]
                 as! UIImage
             
-            if (self.restorationIdentifier == "UserRegistrationStep2") {
-                fullPicture.image = image
-                helper.compressImageAndStore(image, keyStr: "fullPicture")
-            } else if (self.restorationIdentifier == "UserRegistrationStep3") {
+            if (self.restorationIdentifier == "UserRegistrationStep3") {
                 avatarPic.image = image
                 helper.compressImageAndStore(image, keyStr: "avatarPic")
             }
             
             if (newMedia == true) {
-                UIImageWriteToSavedPhotosAlbum(image, self,
-                                               #selector(AddPicture.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                UIImageWriteToSavedPhotosAlbum(
+                    image,
+                    self,
+                    #selector(
+                        AddPicture.image(
+                            _:didFinishSavingWithError:contextInfo:
+                        )
+                    ),
+                    nil
+                )
             } else if mediaType.contains(kUTTypeMovie as String) {
                 // Code to support video here
             }

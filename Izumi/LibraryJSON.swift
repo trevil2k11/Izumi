@@ -17,6 +17,14 @@ class LibraryJSON {
         return "{'controller':'auth','action':'trytoauth','login':'" + login + "','pwd':'" + pwd + "'}";
     }
     
+    func returnUpdateField(_ id: String, table: String, field: String, value: String, type: String, val_length: Int) -> String {
+        var resultString = "{'controller':'users','action':'updatefield','user_id':'" + id + "','table':'" + table
+        resultString += "','field':'" + field  + "','value':'" + value + "','type':'" + type
+        resultString += "','length':'" + String(val_length) + "'}";
+        
+        return resultString;
+    }
+    
     func returnLib(_ lower_id: String, upper_id: String) -> String {
         return "{'controller':'loaders','action':'getlib','low_id':'" + lower_id + "','upper_id':'" + upper_id + "'}";
     }
@@ -75,7 +83,9 @@ class LibraryJSON {
     
     func returnUploadPicture(_ params: [String:String]) -> String {
         //user_id, place, pic_name, description, file_name, pic_data
-        var resStr: String = "{'controller':'loaders','action':'upload','id':'"+params["user_id"]!+"','place':'1','name':'"+params["pic_name"]!+"','description':'" + params["descr"]! + "','file_name':'','pic_data':'"
+        var resStr: String = "{'controller':'users','action':'uploadpicture','id':'"+params["user_id"]!;
+        resStr += "','place':'" + params["place"]! + "','name':'"+params["pic_name"]!;
+        resStr += "','description':'" + params["descr"]! + "','file_name':'','pic_data':'";
         resStr = (helperLib.returnCyrillicAndJsoned(resStr as NSString) as String) + params["pic_data"]! + (helperLib.returnCyrillicAndJsoned("'}") as String)
         
         return resStr
@@ -86,6 +96,15 @@ class LibraryJSON {
     }
     
     func returnCreateUser(_ params: [String:String]) -> String{
+        let deviceId:String = UIDevice.current.identifierForVendor!.uuidString
+        
+        var resultStr: String = "{'controller':'users','action':'create','login':'" + params["login"]! + "','pwd':'" + params["pwd"]! + "','device_id':'" + deviceId + "','user_type':'" + params["user_type"]! + "','avatar':'"
+        resultStr += helperLib.percentEscapeString(params["avatar"]!) + (helperLib.specUnicodeCyrillic("','diploma':'") as String)
+        resultStr += helperLib.percentEscapeString(params["diploma"]!) + (helperLib.specUnicodeCyrillic("'}") as String);
+        return helperLib.specUnicodeCyrillic(resultStr as NSString) as String;
+    }
+    
+    func returnCreateUserOld(_ params: [String:String]) -> String{
         let deviceId:String = UIDevice.current.identifierForVendor!.uuidString
         
         var resultStr: String = "{'controller':'users','action':'create','login':'" + params["login"]! + "','pwd':'" + params["pwd"]! + "','email':'" + params["email"]! + "','date_birth':'" + params["dt_birth"]! + "','sex':'" + params["sex"]! + "','device_id':'" + deviceId + "','type_up':'" + params["typeUp"]! + "','type_mid_up':'" + params["typeMidUp"]! + "','type_mid_down':'" + params["typeMidDown"]! + "','type_bottom':'" + params["typeBottom"]! + "','comment':'" + params["comment"]! + "','hair':'" + params["hair"]! + "','skin':'" + params["skin"]! + "','brown':'" + params["brown"]! + "','eyes':'" + params["eyes"]! + "','eyes_add':'" + params["eyesAdd"]! + "','venous_color':'" + params["venousColor"]! + "','place':'" + params["place"]! + "','full_picture':'";
