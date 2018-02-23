@@ -49,10 +49,10 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var avatarContainer: UIView!
     
     override func viewWillAppear(_ animated: Bool) {
-        super.setGradient(viewController: self)
+        super.view.backgroundColor = helper.getMainColor()
         super.viewWillAppear(animated)
         
-        if (self.restorationIdentifier == "UserRegistrationStep1") {
+        if (self.restorationIdentifier == "personalView") {
             helper.buttonDecorator(checkFields, backToLoginForm)
             helper.textFieldDecorator(loginText, emailText, pwdText, dateBirth)
             loginText.text = String(helper.loadUserDefaults("login"))
@@ -63,7 +63,7 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
         
-        if (self.restorationIdentifier == "UserRegistrationStep3") {
+        if (self.restorationIdentifier == "avatarView") {
             helper.buttonDecorator(backToStep2, nextToStep4)
             
             let eyeCl:UIColor = helper.loadEyeColor(key: "eyeColor")
@@ -88,7 +88,7 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
             }
         }
         
-        if (self.restorationIdentifier == "UserRegistrationStep4") {
+        if (self.restorationIdentifier == "aboutMeView") {
             helper.buttonDecorator(backToStep3, finishRegistration)
             helper.textFieldDecorator(skinColor, hairColor)
             helper.textViewDecorator(targetText)
@@ -141,10 +141,10 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (self.restorationIdentifier == "UserRegistrationStep3") {
+        if (self.restorationIdentifier == "figureView") {
             helper.doRound(avatarContainer, needBorder: false)
             drawEyeColor(rect: eyeColor.bounds)
-        } else if (self.restorationIdentifier == "UserRegistrationStep4") {
+        } else if (self.restorationIdentifier == "aboutMeView") {
             additionalArray.append(skin)
             additionalArray.append(hair)
             
@@ -295,7 +295,7 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func checkRequiredFields(_ sender: AnyObject) {
-        if (self.restorationIdentifier == "UserRegistrationStep1") {
+        if (self.restorationIdentifier == "personalView") {
             let allRFNE: Int = checkEmpty(loginText) + checkEmpty(pwdText) + checkEmpty(emailText) + checkEmpty(dateBirth);
             if (allRFNE == 0) {
                 helper.clearCoreData();
@@ -304,7 +304,6 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
                 helper.saveUserDefaults(emailText.text!, key: "email")
                 helper.saveUserDefaults(dateBirth.text!, key: "dateBirth")
                 helper.saveUserDefaults(String(sexChanger.selectedSegmentIndex), key: "sex")
-                helper.goToScreen("UserRegistrationStep2", parent: self)
             }
         }
     }
@@ -327,7 +326,7 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     @IBAction func goToNextStepAction(_ sender: UIButton) {
-        if (self.restorationIdentifier == "UserRegistrationStep3") {
+        if (self.restorationIdentifier == "aboutMeView") {
             
             helper.saveEyeColor(getPickedColor(), key: "eyeColor")
         }
@@ -353,7 +352,7 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
             let image = info[UIImagePickerControllerOriginalImage]
                 as! UIImage
             
-            if (self.restorationIdentifier == "UserRegistrationStep3") {
+            if (self.restorationIdentifier == "avatarView") {
                 avatarPic.image = image
                 helper.compressImageAndStore(image, keyStr: "avatarPic")
             }

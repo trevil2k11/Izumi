@@ -10,9 +10,13 @@ import UIKit
 
 class UserRegistrationUIPageViewController: UIPageViewController {
 
+    let helperLib = Helper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = helperLib.getMainColor()
+        
         dataSource = self
         
         if let firstViewController = orderedViewControllers.first {

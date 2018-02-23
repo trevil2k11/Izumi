@@ -44,6 +44,8 @@ class MainUserProfile: UIViewController, UICollectionViewDataSource, UICollectio
         super.viewDidLoad();
         self.hideKbrdWhenTapAround();
         
+        self.view.backgroundColor = helperLib.getMainColor()
+        
         helperLib.doRound(avatarView)
         helperLib.doRound(userStatus)
         helperLib.doRound(userAvatarContainer)
@@ -75,6 +77,19 @@ class MainUserProfile: UIViewController, UICollectionViewDataSource, UICollectio
         }
     }
 
+    @IBOutlet weak var profileBtn: UIButton!
+    @IBOutlet weak var addPhotoBtn: UIButton!
+    @IBOutlet weak var consultationBtn: UIButton!
+    @IBOutlet weak var libBtn: UIButton!
+    @IBOutlet weak var wardrobeBtn: UIButton!
+    @IBOutlet weak var leftDimension: NSLayoutConstraint!
+    @IBOutlet weak var rightDimension: NSLayoutConstraint!
+    func placeButtons() {
+        leftDimension.constant = ((addPhotoBtn.frame.minX - profileBtn.frame.maxX) / 2) - (consultationBtn.bounds.width/2)
+        
+        rightDimension.constant = ((wardrobeBtn.frame.minX - addPhotoBtn.frame.maxX) / 2) - (libBtn.bounds.width/2)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdenifier, for: indexPath) as! FavoritesCell
         

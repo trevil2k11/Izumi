@@ -11,6 +11,8 @@
 		2008EF671EE785610054D87F /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2008EF661EE785610054D87F /* PhotoCell.swift */; };
 		20332FEF1DDA6388006003E8 /* fakeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20332FEE1DDA6388006003E8 /* fakeController.swift */; };
 		2037C2D71D9E1934001976E3 /* chatRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037C2D61D9E1934001976E3 /* chatRoomController.swift */; };
+		204100771F3D3CC100B12F08 /* UserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204100761F3D3CC100B12F08 /* UserInfoController.swift */; };
+		204100791F3D449400B12F08 /* WardrobePlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204100781F3D449400B12F08 /* WardrobePlaceViewController.swift */; };
 		204F3B851DECF4370056F9A0 /* LibraryControllerRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F3B841DECF4370056F9A0 /* LibraryControllerRequests.swift */; };
 		204F3B871DECF4520056F9A0 /* LibraryControllerSubscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204F3B861DECF4520056F9A0 /* LibraryControllerSubscriptions.swift */; };
 		2055AB081D63C565005F8E63 /* AddPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB061D63C565005F8E63 /* AddPicture.swift */; };
@@ -69,6 +71,8 @@
 		2008EF661EE785610054D87F /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		20332FEE1DDA6388006003E8 /* fakeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fakeController.swift; sourceTree = "<group>"; };
 		2037C2D61D9E1934001976E3 /* chatRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatRoomController.swift; sourceTree = "<group>"; };
+		204100761F3D3CC100B12F08 /* UserInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoController.swift; sourceTree = "<group>"; };
+		204100781F3D449400B12F08 /* WardrobePlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WardrobePlaceViewController.swift; sourceTree = "<group>"; };
 		204F3B841DECF4370056F9A0 /* LibraryControllerRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryControllerRequests.swift; sourceTree = "<group>"; };
 		204F3B861DECF4520056F9A0 /* LibraryControllerSubscriptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryControllerSubscriptions.swift; sourceTree = "<group>"; };
 		2055AAED1D63C4FC005F8E63 /* Izumi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Izumi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +233,7 @@
 				20DDA0C81E8F1D74001103F5 /* SimpleRegistrationViewController.swift */,
 				20DDA0CA1E944A65001103F5 /* LearningScreensViewController.swift */,
 				20FA7B811EA2CE460048819F /* SimpleAuthController.swift */,
+				204100781F3D449400B12F08 /* WardrobePlaceViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				2055AB221D63C58E005F8E63 /* MainUserProfile.swift */,
 				2055AB2D1D63C58E005F8E63 /* UserProfileDetails.swift */,
 				2055AB2E1D63C58E005F8E63 /* UserProfileFigure.swift */,
+				204100761F3D3CC100B12F08 /* UserInfoController.swift */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -373,8 +379,10 @@
 				2055AB451D63C58E005F8E63 /* PlaceTableViewController.swift in Sources */,
 				2055AB3C1D63C58E005F8E63 /* JSONData.swift in Sources */,
 				2055AB401D63C58E005F8E63 /* LibraryControllerMain.swift in Sources */,
+				204100771F3D3CC100B12F08 /* UserInfoController.swift in Sources */,
 				2055AB501D63C58E005F8E63 /* WardrobeCell.swift in Sources */,
 				20DDA0C91E8F1D74001103F5 /* SimpleRegistrationViewController.swift in Sources */,
+				204100791F3D449400B12F08 /* WardrobePlaceViewController.swift in Sources */,
 				2055AB3D1D63C58E005F8E63 /* JSONData.xcdatamodeld in Sources */,
 				2055AB421D63C58E005F8E63 /* MainStylistProfile.swift in Sources */,
 				2055AB4F1D63C58E005F8E63 /* ViewController.swift in Sources */,

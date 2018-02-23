@@ -11,7 +11,7 @@ import UIKit
 import MobileCoreServices
 import Photos
 
-class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UIPopoverPresentationControllerDelegate {
     
     typealias NSErrorPointer = AutoreleasingUnsafeMutablePointer<NSError?>
     
@@ -22,6 +22,7 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var beckButton: UIButton!
     
     @IBOutlet weak var uiviewForLibrary: UIView!
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         collectionView.dataSource = self;
         
         super.viewDidLoad()
+        self.view.backgroundColor = helperLib.getMainColor()
         self.hideKbrdWhenTapAround();
         setupPhotos();
     }
@@ -51,30 +53,53 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         }
     }
     
+    @IBAction func backToPreviousScreen(_ sender: Any) {
+        helperLib.goToScreen(helperLib.loadUserDefaults("lastViewController"), parent: self)
+    }
+    
     @IBAction func uploadPicture(_ sender: UIButton) {
-        if imageView.image != nil {
-            let imageData: Data = UIImageJPEGRepresentation(helperLib.compressImage(imageView.image!), 1.0)!;
-            let savePict = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-            let uploadPic = helperLib.percentEscapeString(savePict)
-            
-            var params: [String:String] = [:];
-            params["user_id"] = helperLib.loadUserDefaults("user_id");
-            params["pic_data"] = uploadPic;
-            
-            let sendStr = retJSON.returnUploadPicture(params);
-            
-            curlSender.sendData(sendStr, completionHandler: { result in
-                OperationQueue.main.addOperation {
-                    if Int(self.helperLib.getResFromJSON(result!)) == 1 {
-                        self.imageView.image = nil;
-                    } else {
-                        self.helperLib.showAlertMessage("err_pic", viewControl: self)
-                    }
-                }
-            })
-        }
-        
-        
+//        if imageView.image != nil {
+//            let imageData: Data = UIImageJPEGRepresentation(helperLib.compressImage(imageView.image!), 1.0)!;
+//            let savePict = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//            let uploadPic = helperLib.percentEscapeString(savePict)
+//            
+//            var params: [String:String] = [:];
+//            params["user_id"] = helperLib.loadUserDefaults("user_id");
+//            params["pic_data"] = uploadPic;
+//            
+//            let sendStr = retJSON.returnUploadPicture(params);
+//            
+//            curlSender.sendData(sendStr, completionHandler: { result in
+//                OperationQueue.main.addOperation {
+//                    if Int(self.helperLib.getResFromJSON(result!)) == 1 {
+//                        self.imageView.image = nil;
+//                    } else {
+//                        self.helperLib.showAlertMessage("err_pic", viewControl: self)
+//                    }
+//                }
+//            })
+//        }
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "powerId")
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+        popover.delegate = self
+        present(vc, animated: true, completion:nil)
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        let navigationController = UINavigationController(rootViewController: controller.presentedViewController)
+        let btnDone = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(AddPicture.dismiss as (AddPicture) -> () -> ()))
+        navigationController.topViewController?.navigationItem.rightBarButtonItem = btnDone
+        return navigationController
+    }
+    
+    func dismiss() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cameraTakePicture(_ sender: UIBarButtonItem) {
@@ -100,7 +125,7 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     var favoritesLib: [UIImage] = []
     
     func setupPhotos() {
-        let imageManager = PHCachingImageManager()
+        let imageManager = PHImageManager()
         
         
         PHPhotoLibrary.requestAuthorization { (status) in
@@ -109,13 +134,15 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
             case .authorized:
                 print("Good to proceed")
                 let fetchOptions = PHFetchOptions()
+                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+
                 let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
                 for i in 0..<allPhotos.count {
                     let asset = allPhotos.object(at: i)
                     
                     let imSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
                     let options = PHImageRequestOptions()
-                    options.deliveryMode = .fastFormat
+                    options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
     
                     imageManager.requestImage(
                         for: asset,
@@ -149,14 +176,13 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        helperLib.showDataMessage(String(indexPath.row))
         self.imageView.image = favoritesLib[indexPath.row]
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionView.bounds.height, height: self.collectionView.bounds.height)
+        return CGSize(width: self.collectionView.bounds.width/4, height: self.collectionView.bounds.width/4)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

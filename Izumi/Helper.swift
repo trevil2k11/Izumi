@@ -292,7 +292,7 @@ class Helper {
         savePicToData(compressImage(img), keyStr: keyStr)
     }
     
-    func compressImage(_ img: UIImage, maxHeight: CGFloat = 640.0, maxWidth: CGFloat = 480.0) -> UIImage {
+    func compressImage(_ img: UIImage, maxHeight: CGFloat = 1024.0, maxWidth: CGFloat = 768.0) -> UIImage {
         var actHeight: CGFloat = img.size.height
         var actWidth: CGFloat = img.size.width
         

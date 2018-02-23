@@ -17,7 +17,9 @@ class LibraryCellTableViewCell: UITableViewCell {
     var libComment: [[String:String]] = []
     var pic_id: Int = 0;
     
+    @IBOutlet weak var autorAvatar: UIImageView!
     @IBOutlet weak var loadImage: UIImageView!
+    @IBOutlet weak var viewForPhoto: UIView!
     @IBOutlet weak var rating: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var goToComments: UIButton!
@@ -37,6 +39,9 @@ class LibraryCellTableViewCell: UITableViewCell {
         paragraphStyleBold.alignment = NSTextAlignment.left
         paragraphStyleStd.alignment = NSTextAlignment.justified
         
+        helperLib.doRound(autorAvatar)
+        autorAvatar.backgroundColor = .gray
+        
         attrsBold = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSParagraphStyleAttributeName: paragraphStyleBold]
         attrsStd = [NSParagraphStyleAttributeName: paragraphStyleStd]
     }
@@ -46,10 +51,15 @@ class LibraryCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBOutlet weak var photoHeight: NSLayoutConstraint!
+    
     func configure(_ dict: [String:String]) {
         let imgUrl = jsonLib.returnFullURL(dict["pic_data"]!)
         self.pic_id = Int(dict["id"]!)!
         ImageLoader.sharedLoader.imageForUrl(imgUrl) { (image, url) -> () in
+            
+//            self.photoHeight.constant = ((image?.size.height)!) * (self.bounds.width / (image?.size.width)!);
+            
             self.loadImage.image = image;
             self.activityIndicator.stopAnimating();
         }

@@ -12,6 +12,18 @@ import UIKit
 class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableLib: UITableView!
     
+    @IBOutlet weak var mainGalleryBtn: UIButton!
+    @IBOutlet weak var queriesGalleryBtn: UIButton!
+    @IBOutlet weak var subscribeGallery: UIButton!
+    
+    @IBOutlet weak var profileBtn: UIButton!
+    @IBOutlet weak var consultationBtn: UIButton!
+    @IBOutlet weak var addPhotoBtn: UIButton!
+    @IBOutlet weak var libBtn: UIButton!
+    @IBOutlet weak var wardrobeBtn: UIButton!
+    @IBOutlet weak var leftDimension: NSLayoutConstraint!
+    @IBOutlet weak var rightDimension: NSLayoutConstraint!
+    
     @IBAction func profileReturn(_ sender: UIButton) {
         if self.helperLib.loadUserDefaults("user_type") == "user" {
             self.helperLib.goToScreen("userProfile", parent: self)
@@ -38,12 +50,28 @@ class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        helperLib.saveUserDefaults(self.restorationIdentifier!, key: "lastViewController")
+        
+        super.setGradient(viewController: self)
+        
+        helperLib.buttonDecorator(mainGalleryBtn, queriesGalleryBtn, subscribeGallery, bordered: false)
+        
+        tableLib.rowHeight = UITableViewAutomaticDimension
+        tableLib.estimatedRowHeight = 400
+        
         refreshControl.addTarget(self, action: #selector(LibraryControllerMain.refresh(_:)), for: UIControlEvents.valueChanged)
         
         tableLib.dataSource = self
         tableLib.delegate = self
         
         tableLib.addSubview(refreshControl)
+        self.placeButtons();
+    }
+    
+    func placeButtons() {
+        leftDimension.constant = ((addPhotoBtn.frame.minX - profileBtn.frame.maxX) / 2) - (consultationBtn.bounds.width/2)
+        
+        rightDimension.constant = ((wardrobeBtn.frame.minX - addPhotoBtn.frame.maxX) / 2) - (libBtn.bounds.width/2)
     }
     
     func refresh(_ sender:AnyObject) {
@@ -79,6 +107,10 @@ class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return libArray.count
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "libCell", for: indexPath) as! LibraryCellTableViewCell
