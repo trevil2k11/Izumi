@@ -24,6 +24,7 @@ class LibraryCellTableViewCell: UITableViewCell {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var goToComments: UIButton!
     @IBOutlet weak var starIt: UIButton!
+    @IBOutlet weak var uploader_nickname: UILabel!
     
     @IBOutlet weak var commentView: UITextView!
     
@@ -48,50 +49,24 @@ class LibraryCellTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
     }
     
     @IBOutlet weak var photoHeight: NSLayoutConstraint!
     
-    func configure(_ dict: [String:String]) {
-        let imgUrl = jsonLib.returnFullURL(dict["pic_data"]!)
-        self.pic_id = Int(dict["id"]!)!
-        ImageLoader.sharedLoader.imageForUrl(imgUrl) { (image, url) -> () in
-            
-//            self.photoHeight.constant = ((image?.size.height)!) * (self.bounds.width / (image?.size.width)!);
-            
-            self.loadImage.image = image;
-            self.activityIndicator.stopAnimating();
-        }
-        
-        getComment(dict["id"]!)
+    func configure(_ dict: [String:Any]) {
+        self.pic_id = Int(dict["pic_id"] as! String)!
+        self.uploader_nickname.text = dict["author"] as? String
+        activityIndicator.stopAnimating()
+        self.loadImage.image = dict["image"] as? UIImage
+        addComment(dict)
     }
+
+    func addComment(_ dict : [String:Any]) {
+        let finalMutableString = NSMutableAttributedString()
+            let header = NSMutableAttributedString(string: dict["comment_author"] as! String + " - ", attributes: attrsBold)
+            header.append(NSAttributedString(string: dict["comment"] as! String, attributes: attrsStd))
+            finalMutableString.append(header);
     
-    func getComment(_ id: String) {
-        let body: String = self.jsonLib.returnComments(id)
-        curlSender.sendData(body) {result in
-            self.libComment = self.helperLib.returnDictFromJSON(result!)
-            self.addComment()
-        }
-    }
-    
-    func addComment() {
-        if self.libComment.count > 0 {
-            let finMutStr = NSMutableAttributedString()
-            if self.libComment.count > 1 {
-                let header = NSMutableAttributedString(string: self.libComment[0]["header"]! + "\n", attributes: attrsBold)
-                header.append(NSAttributedString(string: self.libComment[0]["user_comment"]! + "\n", attributes: attrsStd))
-                header.append(NSAttributedString(string: ".......(" + String(self.libComment.count) + ")\n", attributes: attrsStd))
-                finMutStr.append(header)
-            } else if self.libComment.count == 1 {
-                let header = NSMutableAttributedString(string: self.libComment[0]["header"]! + "\n", attributes: attrsBold)
-                header.append(NSAttributedString(string: self.libComment[0]["user_comment"]! + "\n", attributes: attrsStd))
-                finMutStr.append(header);
-            }
-            OperationQueue.main.addOperation {
-                self.commentView.attributedText = finMutStr.mutableCopy() as! NSAttributedString
-                self.rating.text = String(self.libComment.count)
-            }
-        }
+            self.commentView.attributedText = finalMutableString.mutableCopy() as! NSAttributedString
     }
 }

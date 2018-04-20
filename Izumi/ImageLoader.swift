@@ -32,7 +32,9 @@ class ImageLoader {
 				return
 			}
 			
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true;
+            DispatchQueue.main.async(execute: {() in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true;
+            })
             
             let downloadTask: URLSessionDataTask = URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
 				if (error != nil) {

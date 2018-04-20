@@ -272,7 +272,6 @@ class Helper {
                 returnArray.append(post)
             }
         }
-        
         return returnArray;
     }
     
@@ -363,7 +362,7 @@ class Helper {
         return NSMutableAttributedString(string: text, attributes: attrsStd)
     }
     
-    func buttonDecorator(_ buttons: UIButton..., bordered: Bool = true) {
+    func buttonDecorator(_ buttons: UIButton..., bordered: Bool = true, alpha: Float = 0.85) {
         for button in buttons {
 //            button.backgroundColor = UIColor.init(colorLiteralRed: 94/255, green: 67/255, blue: 191/255, alpha: 1)
             button.backgroundColor = .clear
@@ -373,10 +372,11 @@ class Helper {
                 button.layer.borderColor = UIColor.white.cgColor
             }
             button.setTitleColor(UIColor.white, for: UIControlState.normal)
+            button.alpha = CGFloat(alpha)
         }
     }
     
-    func textFieldDecorator(_ textFields: UITextField..., bordered: Bool = true) {
+    func textFieldDecorator(_ textFields: UITextField..., bordered: Bool = true, alpha: Float = 0.85) {
         for textField in textFields {
             textField.backgroundColor = .clear
             textField.font =  UIFont(name: "Muller", size: 20.0)
@@ -386,10 +386,11 @@ class Helper {
                 textField.layer.borderColor = UIColor.white.cgColor
             }
             textField.textColor = UIColor.white
+            textField.alpha = CGFloat(alpha)
         }
     }
     
-    func textViewDecorator(_ textViews: UITextView..., bordered: Bool = true) {
+    func textViewDecorator(_ textViews: UITextView..., bordered: Bool = true, alpha: Float = 0.85) {
         for textView in textViews {
             textView.backgroundColor = .clear
             textView.font =  UIFont(name: "Muller", size: 20.0)
@@ -399,6 +400,7 @@ class Helper {
                 textView.layer.borderColor = UIColor.white.cgColor
             }
             textView.textColor = UIColor.white
+            textView.alpha = CGFloat(alpha)
         }
     }
     

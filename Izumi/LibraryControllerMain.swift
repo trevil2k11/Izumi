@@ -40,12 +40,19 @@ class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    @IBAction func showCommentView(_ sender: UIButton) {
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "ShowPictureFromLibrary") as! ShowCommentViewViewController
+        myVC.libData = self.libArray[sender.tag]
+        self.present(myVC, animated: true, completion: nil)
+    }
+    
     let curlSender = CurlController();
     let helperLib = Helper();
     let jsonLib = LibraryJSON();
+    let imgLoader = ImageLoader();
     
     let refreshControl = UIRefreshControl()
-    var libArray: [[String:String]] = [];
+    var libArray: [[String:Any]] = [];
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +63,6 @@ class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableVie
         
         helperLib.buttonDecorator(mainGalleryBtn, queriesGalleryBtn, subscribeGallery, bordered: false)
         
-        tableLib.rowHeight = UITableViewAutomaticDimension
-        tableLib.estimatedRowHeight = 400
-        
         refreshControl.addTarget(self, action: #selector(LibraryControllerMain.refresh(_:)), for: UIControlEvents.valueChanged)
         
         tableLib.dataSource = self
@@ -66,6 +70,9 @@ class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableVie
         
         tableLib.addSubview(refreshControl)
         self.placeButtons();
+        
+        tableLib.rowHeight = UITableViewAutomaticDimension
+        tableLib.estimatedRowHeight = 334
     }
     
     func placeButtons() {
@@ -108,13 +115,10 @@ class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableVie
         return libArray.count
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "libCell", for: indexPath) as! LibraryCellTableViewCell
         cell.configure(self.libArray[(indexPath as NSIndexPath).row])
+        cell.goToComments.tag = (indexPath as NSIndexPath).row
         return cell;
     }
     
@@ -122,7 +126,16 @@ class LibraryControllerMain: UIViewController, UITableViewDataSource, UITableVie
         let body:String = jsonLib.returnLib(String(self.accessibilityElementCount()), upper_id: String(self.accessibilityElementCount()+5))
         curlSender.sendData(body) {result in
             self.libArray = self.helperLib.returnDictFromJSON(result!)
-            if self.libArray.count > 0 {
+            
+            for elem in 0..<self.libArray.count {
+                let url = self.jsonLib.returnFullURL(self.libArray[elem]["pic_data"] as! String)
+                
+                self.imgLoader.imageForUrl(url) { (image, url) -> () in
+                    if image != nil {
+                        self.libArray[elem]["image"] = image
+                    }
+                }
+                
                 DispatchQueue.main.async(execute: {
                     self.tableLib.reloadData();
                     return

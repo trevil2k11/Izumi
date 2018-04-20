@@ -26,8 +26,6 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     var newMedia: Bool?
     
     @IBOutlet weak var checkFields: UIButton!
-    @IBOutlet weak var loginText: UITextField!
-    @IBOutlet weak var pwdText: UITextField!
     @IBOutlet weak var sexChanger: UISegmentedControl!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var dateBirth: UITextField!
@@ -53,9 +51,8 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
         super.viewWillAppear(animated)
         
         if (self.restorationIdentifier == "personalView") {
-            helper.buttonDecorator(checkFields, backToLoginForm)
-            helper.textFieldDecorator(loginText, emailText, pwdText, dateBirth)
-            loginText.text = String(helper.loadUserDefaults("login"))
+            helper.buttonDecorator(checkFields, backToLoginForm, alpha: 0.65)
+            helper.textFieldDecorator(emailText, dateBirth, alpha: 1.0)
             emailText.text = helper.loadUserDefaults("email")
             dateBirth.text = helper.loadUserDefaults("dateBirth")
             if (helper.loadUserDefaults("sex").isEmpty == false) {
@@ -296,11 +293,9 @@ class RegistrationUserController: UIViewController, UIPickerViewDelegate, UIPick
     
     @IBAction func checkRequiredFields(_ sender: AnyObject) {
         if (self.restorationIdentifier == "personalView") {
-            let allRFNE: Int = checkEmpty(loginText) + checkEmpty(pwdText) + checkEmpty(emailText) + checkEmpty(dateBirth);
+            let allRFNE: Int = checkEmpty(emailText) + checkEmpty(dateBirth);
             if (allRFNE == 0) {
                 helper.clearCoreData();
-                helper.saveUserDefaults(loginText.text!, key: "login")
-                helper.saveUserDefaults(helper.md5(pwdText.text!), key: "pwd")
                 helper.saveUserDefaults(emailText.text!, key: "email")
                 helper.saveUserDefaults(dateBirth.text!, key: "dateBirth")
                 helper.saveUserDefaults(String(sexChanger.selectedSegmentIndex), key: "sex")

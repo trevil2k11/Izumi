@@ -55,11 +55,11 @@ class SimpleAuthController: UIViewController {
         let body = jsonLib.returnAuth(log, pwd: pwd)
         
         self.helperLib.saveUserDefaults(String(true), key: "autoLogin")
-        
+
         curlSender.sendData(body) {result in
             OperationQueue.main.addOperation {
                 let res = self.helperLib.returnDictFromJSON(result!);
-                
+            
                 if (res.count > 0) {
                     if (res[0]["user_type"] == "0") {
                         self.helperLib.saveUserDefaults("user", key: "user_type")

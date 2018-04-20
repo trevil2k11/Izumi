@@ -58,33 +58,32 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
     @IBAction func uploadPicture(_ sender: UIButton) {
-//        if imageView.image != nil {
-//            let imageData: Data = UIImageJPEGRepresentation(helperLib.compressImage(imageView.image!), 1.0)!;
-//            let savePict = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-//            let uploadPic = helperLib.percentEscapeString(savePict)
-//            
-//            var params: [String:String] = [:];
-//            params["user_id"] = helperLib.loadUserDefaults("user_id");
-//            params["pic_data"] = uploadPic;
-//            
-//            let sendStr = retJSON.returnUploadPicture(params);
-//            
-//            curlSender.sendData(sendStr, completionHandler: { result in
+        if imageView.image != nil {
+            let imageData: Data = UIImageJPEGRepresentation(helperLib.compressImage(imageView.image!), 1.0)!;
+            
+            var params: [String:String] = [:];
+            params["id"] = helperLib.loadUserDefaults("user_id");
+            params["controller"] = "loaders"
+            params["action"] = "upload"
+            params["place"] = "4"
+            
+            curlSender.imageUploadRequest(imageData: imageData, param: params)
+//            { result in
 //                OperationQueue.main.addOperation {
 //                    if Int(self.helperLib.getResFromJSON(result!)) == 1 {
-//                        self.imageView.image = nil;
+                        self.imageView.image = nil;
 //                    } else {
 //                        self.helperLib.showAlertMessage("err_pic", viewControl: self)
 //                    }
 //                }
 //            })
-//        }
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "powerId")
-        vc.modalPresentationStyle = UIModalPresentationStyle.popover
-        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
-        popover.delegate = self
-        present(vc, animated: true, completion:nil)
+        }
+//        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "powerId")
+//        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+//        let popover: UIPopoverPresentationController = vc.popoverPresentationController!
+//        popover.delegate = self
+//        present(vc, animated: true, completion:nil)
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -127,23 +126,20 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     func setupPhotos() {
         let imageManager = PHImageManager()
         
-        
         PHPhotoLibrary.requestAuthorization { (status) in
             switch status
             {
             case .authorized:
-                print("Good to proceed")
                 let fetchOptions = PHFetchOptions()
-                fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-
                 let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+                
                 for i in 0..<allPhotos.count {
                     let asset = allPhotos.object(at: i)
                     
                     let imSize = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
                     let options = PHImageRequestOptions()
                     options.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
-    
+                    
                     imageManager.requestImage(
                         for: asset,
                         targetSize: imSize,
@@ -151,8 +147,8 @@ class AddPicture: UIViewController, UIImagePickerControllerDelegate, UINavigatio
                         options: options,
                         resultHandler: { (UIImage, info) in
                             self.favoritesLib.append(UIImage!)
+                            self.collectionView.reloadData();
                     })
-                    self.collectionView.reloadData();
                 }
             case .denied, .restricted:
                 print("Not allowed")
